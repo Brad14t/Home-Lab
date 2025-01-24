@@ -151,9 +151,7 @@ To start select the pfSense VM annd select `Start`
 
 <img width="550" alt="Screenshot 2025-01-24 105007" src="https://github.com/user-attachments/assets/59f995ed-add5-4804-8992-ff4044d58288" />
 
-
-
-
+I cam across an issue when trying to start my new VM.
 
 
 

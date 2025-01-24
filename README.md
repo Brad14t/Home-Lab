@@ -153,12 +153,27 @@ To start select the pfSense VM annd select `Start`
 
 I cam across an issue when trying to start my new VM.
 
+![Screenshot 2025-01-24 105045](https://github.com/user-attachments/assets/caef7305-f3ae-43cf-983a-f4112a733c02)
+
+I went through a few different stack overflow chats about what could be causing this. Ultimatly I just updated my computer and it worked.
+
+But once you can get the VM to start, lots of text will pop up, wait till you see this screen and click `enter`.
+
+![Screenshot 2025-01-24 112630](https://github.com/user-attachments/assets/f6b16a44-fdfb-45f0-aa9e-edd9a522e402)
 
 
 
 
 
 
+
+
+
+When you install an operating system like pfSense from an .iso file, the VM treats it as if it's booting from a physical CD/DVD.
+After installation is complete, the VM no longer needs the .iso file to run because the operating system is now installed on the virtual hard drive.
+By removing the disk, you:
+Prevent the VM from booting into the installer again (which would restart the installation process if left in the drive).
+Free up the virtual optical drive for other uses.
 
 
 

@@ -135,8 +135,14 @@ Inside `pfSense` vm settings, scroll down to `Network` -> `Adapter ` -> Attached
 
 `Adapter 2` -> Select `Enable Network Adapter` -> Attached to `Internal Network` -> Name `LAN 0` -> Adapter Type `Paravirtualized Network`
 
+![Screenshot 2025-01-24 104515](https://github.com/user-attachments/assets/c25ba877-57c9-46d5-9a4b-7448569a3b79)
+
 `Adapter 3` -> Select `Enable Network Adapter` -> Attached to `Internal Network` -> Name `LAN 1` -> Adapter Type `Paravirtualized Network`
 
+![Screenshot 2025-01-24 104522](https://github.com/user-attachments/assets/06e85c6d-77df-407d-8e98-b0eec23e1f5d)
+
 `Adapter 4` -> Select `Enable Network Adapter` -> Attached to `Internal Network` -> Name `LAN 2` -> Adapter Type `Paravirtualized Network`
+
+![Screenshot 2025-01-24 104531](https://github.com/user-attachments/assets/6990c5ed-c09c-4684-a5f8-6de40a623000)
 
 

@@ -161,13 +161,121 @@ But once you can get the VM to start, lots of text will pop up, wait till you se
 
 ![Screenshot 2025-01-24 112630](https://github.com/user-attachments/assets/f6b16a44-fdfb-45f0-aa9e-edd9a522e402)
 
+Go through the menus -> Press `Enter` to start the Installation -> Press `Enter` to select the Auto (ZFS) partition option -> Press `Enter` to select Proceed with Installation -> Press `Enter` to select Stripe - No Redundancy -> Use the `Spacebar` key to select the Hard Drive (ada0) then press Enter to continue -> Use the Left Arrow to select YES and then press Enter to continue -> Wait for the installation to complete.
+
+![Screenshot 2025-01-24 113337](https://github.com/user-attachments/assets/13e8fa73-f45a-4e81-8fe2-47d4078b16d3)
+
+After select `Reboot`
+
+# pfSense Configuration
+
+After Reboot Next step is to include the adapter we configured earlier.
+
+Should VLANs be set up now? `n` and press `enter`
+
+<img width="577" alt="Screenshot 2025-01-24 113530" src="https://github.com/user-attachments/assets/45ae3032-b125-4e1f-95d3-437a4a4ee4ac" />
+
+Enter the WAN interface name: `vtnet0`
+Enter the LAN interface name: `vtnet1`
+Enter the Optional 1 interface name: `vtnet2`
+Enter the Optional 2 interface name: `vtnet3`
+Do you want to proceed?: `y`
+
+<img width="577" alt="Screenshot 2025-01-24 113650" src="https://github.com/user-attachments/assets/55cac4c7-0e4d-480d-98a4-5cb920a67d42" />
+
+<img width="525" alt="Screenshot 2025-01-24 113711" src="https://github.com/user-attachments/assets/d52bdb60-47d1-4688-bc76-19478cc8b3e8" />
+
+The WAN interface of pfSense gets its IPv4 address automatically from VirtualBox's DHCP server. Similarly, the LAN interface receives an IPv4 address from pfSense's own DHCP service. However, the OPT1 and OPT2 interfaces don’t have any IP addresses assigned yet. To ensure the IP addresses for the LAN, OPT1, and OPT2 interfaces remain the same after each reboot, we will assign them static IPv4 addresses.
+
+To configure the static Ip addresses type `2` and `enter`
+
+<img width="360" alt="Screenshot 2025-01-24 114021" src="https://github.com/user-attachments/assets/26dd192f-9ced-4f8b-a53a-81f23aa4872d" />
+
+Configure IPv4 address LAN interface via DHCP?: n
+Enter the new LAN IPv4 address: 10.0.0.1
+Enter the new LAN IPv4 subnet bit count: 24
+
+<img width="361" alt="Screenshot 2025-01-24 114156" src="https://github.com/user-attachments/assets/9faa473b-13e2-48ca-ba5d-025caa76e96b" />
+
+Then click `enter` since this is a LAN interface it doesnt need data upstreaming
+
+Configure IPv6 address LAN interface via DHCP6: `n`
+For the new LAN IPv6 address question press `Enter`
+Do you want to enable the DHCP server on LAN?: `y`
+Enter the start address of the IPv4 client address range: `10.0.0.11`
+Enter the end address of the IPv4 client address range: `10.0.0.243`
+Do you want to revert to HTTP as the webConfigurator protocol?: `n`
+
+Press `Enter` to finish setup of interface and you will see the new static IP applied
+
+<img width="359" alt="Screenshot 2025-01-24 114410" src="https://github.com/user-attachments/assets/dd94ff12-843d-4e77-85cd-8d44814729bf" />
+
+Configuring OPT1 (vtnet2)
+
+Enter `2` then `3` to select the interface
+Configure IPv4 address OPT1 interface via DHCP?: n
+Enter the new OPT1 IPv4 address: 10.6.6.1
+Enter the new OPT1 IPv4 subnet bit count: 24
+
+<img width="361" alt="Screenshot 2025-01-24 114536" src="https://github.com/user-attachments/assets/fb0db242-5c9a-40e9-80d9-ba827da029af" />
 
 
+Configure IPv6 address OPT1 interface via DHCP6: `n`
+For the new OPT1 IPv6 address question press `Enter`
+Do you want to enable the DHCP server on OPT1?: `y`
+Enter the start address of the IPv4 client address range: `10.6.6.11`
+Enter the end address of the IPv4 client address range: `10.6.6.243`
+Do you want to revert to HTTP as the webConfigurator protocol?: `n`
+
+<img width="358" alt="Screenshot 2025-01-24 114652" src="https://github.com/user-attachments/assets/1f6a42e2-f739-4e6c-bcca-8b65421fe739" />
+
+Press `Enter` to save changes
+
+<img width="244" alt="Screenshot 2025-01-24 114807" src="https://github.com/user-attachments/assets/4a4285a1-0865-4b42-bbc2-ae3555ec6268" />
+
+Configuring OPT2 (vtnet3)
+
+Enter `2` then `4` to select the correct interface
+Configure IPv4 address OPT2 interface via DHCP?: `n`
+Enter the new OPT2 IPv4 address: `10.80.80.1`
+Enter the new OPT2 IPv4 subnet bit count: `24`
+
+<img width="364" alt="Screenshot 2025-01-24 114913" src="https://github.com/user-attachments/assets/dffe5f64-464c-4359-b326-8db6bc0cafe6" />
+
+Select `Enter`
+Configure IPv6 address OPT2 interface via DHCP6: `n`
+For the new OPT2 IPv6 address question press `Enter`
+Do you want to enable the DHCP server on OPT2?: `n`
+Do you want to revert to HTTP as the webConfigurator protocol?: `n`
+
+<img width="363" alt="Screenshot 2025-01-24 115041" src="https://github.com/user-attachments/assets/25b2e1df-04a8-4de9-8582-20faf7a6dd0b" />
 
 
+The OPT2 interface will be used to set up the Active Directory (AD) Lab. In this setup, the Domain Controller (DC) will function as the DHCP server. Because the DC will handle DHCP tasks, we have disabled DHCP-based IP address assignment for the OPT2 interface in pfSense.
 
+Select `Enter` to save configuration.
 
+<img width="360" alt="Screenshot 2025-01-24 115108" src="https://github.com/user-attachments/assets/b78ddfdb-2684-4433-913c-3a75716112dd" />
 
+Shutting down pfSense VM
+
+Its important to remember that this vm needs to be the first vm to boot and the last to shutdown.
+
+Back in the menu type `6` to `hault system`, then `y` to continue. 
+
+<img width="359" alt="Screenshot 2025-01-24 115156" src="https://github.com/user-attachments/assets/65074e38-c56e-40b2-9c6b-9598167aa217" />
+
+After Installation 
+
+Go to the VM and select `settings`
+
+<img width="450" alt="Screenshot 2025-01-24 115247" src="https://github.com/user-attachments/assets/af361261-174b-405c-8507-a72d07886f72" />
+
+Select `Expert` -> `Storage` -> select the `.iso` image -> select the disk to the right -> `Remove disk from Virtual Drive`
+
+<img width="565" alt="Screenshot 2025-01-24 115753" src="https://github.com/user-attachments/assets/f82e6d50-8bb0-4be6-a593-b7b16884d309" />
+
+Why do this?
 
 When you install an operating system like pfSense from an .iso file, the VM treats it as if it's booting from a physical CD/DVD.
 After installation is complete, the VM no longer needs the .iso file to run because the operating system is now installed on the virtual hard drive.
@@ -176,7 +284,7 @@ Prevent the VM from booting into the installer again (which would restart the in
 Free up the virtual optical drive for other uses.
 
 
-
+# Kali Linux INstall & Configuration
 
 
 

@@ -320,19 +320,35 @@ Next select `Machine`-> `Add to Group` -> `New` -> select `New Group` -> `Group`
 
 # Kali Linux VM Configuration
 
+Next is to select the Kali Linux VM -> `Settings` -> Scroll down to `System` and change the boot order to `Hard disc` then `Optical` and uncheck `Floppy`
 
+<img width="573" alt="Screenshot 2025-01-26 120117" src="https://github.com/user-attachments/assets/e4d50025-8def-4cb0-90a7-328a95cedd5c" />
 
+Next go to proccesor and enable `PAE/NX`
 
+Enabling PAE/NX is required for many modern operating systems and software to run correctly within a virtual environment. If your VM needs access to more RAM or the OS being installed requires NX for security (e.g., many Linux distributions or Windows Server versions), enabling this option is a good idea.
 
+If you don’t enable it, some systems may fail to install or function correctly, especially those that rely on security mechanisms or large memory spaces.
 
+<img width="567" alt="Screenshot 2025-01-26 120424" src="https://github.com/user-attachments/assets/5f43f4cf-dbee-4669-b056-fdac4dd8eb6d" />
 
+Next go to `Display` and `Screen` then increase `Video Memory` to `128 MB`
 
+<img width="568" alt="Screenshot 2025-01-26 120716" src="https://github.com/user-attachments/assets/82a297a9-80ec-4af6-bb33-382c3c91772b" />
 
+Next step is the boot image configuration
 
+Scroll down to `Storage` -> Select the `empty` disk image under `Controller IDE` -> Select the cd image to the right -> select `choose a disk file` -> select the `.iso` Kali Linux file downloded previously.
 
+<img width="576" alt="Screenshot 2025-01-26 121356" src="https://github.com/user-attachments/assets/0245656e-e84e-4fd2-8851-332b695ac87b" />
 
+Next is the network configuration.
 
+Scrol down to `Network` -> Adapter 1 
 
+Attached to: `Internal Network`
+
+Adapter type: `Paravirtual Network`
 
 
 

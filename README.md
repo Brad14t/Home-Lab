@@ -286,6 +286,93 @@ Free up the virtual optical drive for other uses.
 
 # Kali Linux INstall & Configuration
 
+Start by downloading Kali Linux: https://www.kali.org/get-kali/#kali-installer-images
+
+Download the 64 bit recommended installer
+
+<img width="787" alt="Screenshot 2025-01-25 130201" src="https://github.com/user-attachments/assets/e57811b6-edb9-4700-b9f5-a20244cbbffa" />
+
+Once downloaded, we can find our `.iso` file.
+
+![Screenshot 2025-01-25 130712](https://github.com/user-attachments/assets/0f315a0d-3d44-4a57-af13-2ca0b0fdd29f)
+
+Go back to `VirtualBox`, selct `tools` -> `new` -> make a new name and save the new vm to the `vm` file we created 
+
+Leave the ISO image field blank -> select `Linux` -> `Debian` -> 64-bit
+
+<img width="586" alt="Screenshot 2025-01-25 131304" src="https://github.com/user-attachments/assets/6bddb152-385b-424b-bd16-7003bffb78df" />
+
+`Unattended Install` leave default
+
+![Screenshot 2025-01-25 131825](https://github.com/user-attachments/assets/f91a2bc7-efdd-4aae-8e85-687e922790dc)
+
+`Hardware` leave default
+
+![Screenshot 2025-01-25 131855](https://github.com/user-attachments/assets/dbda154b-5a29-448d-80b2-d9681de465e9)
+
+`Hard Disk` increase memory to `80 GB` -> select `Finish`
+
+<img width="586" alt="Screenshot 2025-01-25 131304" src="https://github.com/user-attachments/assets/c563b0f3-ea0a-430c-b1a9-c9ae1c2e9ac4" />
+
+Next select `Machine`-> `Add to Group` -> `New` -> select `New Group` -> `Group` -> `Rename Group` -> rename to managment 
+
+<img width="384" alt="Screenshot 2025-01-25 133002" src="https://github.com/user-attachments/assets/30969274-8d48-4816-90d7-4bd805862481" />
+
+# Kali Linux VM Configuration
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

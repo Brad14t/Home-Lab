@@ -722,52 +722,94 @@ And this is what the final rules should look like.
 
 <img width="587" alt="Screenshot 2025-01-27 103630" src="https://github.com/user-attachments/assets/98cd343c-2514-4e39-8aff-ecf037091b76" />
 
+# AD_Lab Rules
 
+In the top bar select `AD_Lab`
 
+<img width="587" alt="Screenshot 2025-01-27 105701" src="https://github.com/user-attachments/assets/c9720c6f-962e-4e77-acd4-0782a89e5257" />
 
+Then select `add rule to end`
 
+<img width="591" alt="Screenshot 2025-01-27 105827" src="https://github.com/user-attachments/assets/c1d514e6-b5c0-432a-aba4-ea2e5b7b485d" />
 
+* Action: `Block`
+* Address Family: `IPv4+IPv6`
+* Protocol: `Any`
+* Source: `AD_LAB subnets`
+* Destination: `WAN subnets`
+* Description: `Block access to services on WAN interface`
 
+<img width="583" alt="Screenshot 2025-01-27 110048" src="https://github.com/user-attachments/assets/cef122ae-d989-425d-ad42-4a21aad79f3d" />
 
+Select `save` -> skip apply chnages -> select `add rule to end`
 
+<img width="589" alt="Screenshot 2025-01-27 110530" src="https://github.com/user-attachments/assets/fe8d6dc8-77f6-4bf1-9748-63cdd2ab6d16" />
 
+* Action: `Block`
+* Address Family: `IPv4+IPv6`
+* Protocol: `Any`
+* Source: `AD_LAB subnets`
+* Destination: `CYBER_RANGE subnets`
+* Description: `Block traffic to CYBER_RANGE interface`
 
+<img width="422" alt="Screenshot 2025-01-27 111535" src="https://github.com/user-attachments/assets/3f327f7b-fca6-474e-99d7-ffed7e51b10a" />
 
+Select `save` -> `add rule to end`
 
+<img width="588" alt="Screenshot 2025-01-27 111643" src="https://github.com/user-attachments/assets/f6516ae1-fc0c-4459-92d4-cff3f965c7e6" />
 
+* Address Family: `IPv4+IPv6`
+* Protocol: `Any`
+* Source: `AD_LAB subnets`
+* Description: `Allow traffic to all other subnets and Internet`
 
+<img width="579" alt="Screenshot 2025-01-27 111855" src="https://github.com/user-attachments/assets/ffdb6508-b9b3-4a85-b32f-68f9891877e5" />
 
+Select `save` -> `Apply Changes`
 
+Then make sure it all looks correct
 
+<img width="591" alt="Screenshot 2025-01-27 111951" src="https://github.com/user-attachments/assets/2d168cd4-60a9-4588-98f4-8e475ad0b579" />
 
+Next step is to apply these new firewall rules, and to do that pfSense is needing to reboot.
 
+At the top of the dashboard go to `Diagnostics` -> `Reboot`
 
+<img width="592" alt="Screenshot 2025-01-27 112146" src="https://github.com/user-attachments/assets/7aea6064-6abf-4ba2-9bfb-dcd48554fabf" />
 
+Then select `submit`
 
+<img width="355" alt="Screenshot 2025-01-27 112158" src="https://github.com/user-attachments/assets/40006104-6483-4eb5-bf67-38577a0c8b1f" />
 
+# Setting up Vulnerable VM's
 
+Head to this link to download `Metasploitable`: https://www.vulnhub.com/entry/metasploitable-2,29/
 
+<img width="922" alt="Screenshot 2025-01-27 141706" src="https://github.com/user-attachments/assets/3bd9f943-d79d-456a-8466-116127693268" />
 
+Download the the compressed file, and extract it. -> Inside the folder look for the `.vmdk` file 
 
+<img width="586" alt="Screenshot 2025-01-27 142822" src="https://github.com/user-attachments/assets/e90ac926-a729-412f-9d63-f4bad43c1dba" />
 
+Next go to VirtualBox and select `Tools` -> `New`
 
+<img width="441" alt="Screenshot 2025-01-27 142901" src="https://github.com/user-attachments/assets/c4b050d0-38e0-46b9-a7b7-df30c52efdea" />
 
+* Give the VM a name: `Metasploitable 2`
+* Set the folder to where youve been saving all your vm's
+* Leave the `iso` blank
+* Type: `Linux`
+* Version: `Debian 64-bit`
 
+<img width="591" alt="Screenshot 2025-01-27 143054" src="https://github.com/user-attachments/assets/e630d646-e8c8-4f6e-bac1-55815e1182c1" />
 
+Then go to `Hardware` and reduce the base memory to `1048`
 
+<img width="472" alt="Screenshot 2025-01-27 144025" src="https://github.com/user-attachments/assets/181da592-078c-4c98-8e6b-cf82903d4d3a" />
 
+Then in `Hard Disk` select `Do Not Add a Hard Disk` since the file we downloaded has the OS pre installed.
 
-
-
-
-
-
-
-
-
-
-
-
+<img width="586" alt="Screenshot 2025-01-27 144158" src="https://github.com/user-attachments/assets/204c4d5d-a1ca-4543-b20e-4b13883fff51" />
 
 
 

@@ -572,6 +572,203 @@ Then save and click ok for popup.
 
 <img width="251" alt="Screenshot 2025-01-26 160541" src="https://github.com/user-attachments/assets/acebfa45-9731-4b0b-8363-5a6c10c017e5" />
 
+# Static IP Assignment 
+
+From the dashboard go to `Status` -> `DHCP Leases`
+
+<img width="595" alt="Screenshot 2025-01-27 094129" src="https://github.com/user-attachments/assets/0d75c9c6-399c-4785-bbd5-648b2d560b5f" />
+
+Here we can see the IP address and range we set, select the `+` to thre right. This will allow us to easily make firewall changes to the interfaces.
+
+<img width="604" alt="Screenshot 2025-01-27 094421" src="https://github.com/user-attachments/assets/869203f2-c8a4-45ab-bf3c-f7312c953820" />
+
+Scroll down to `IP Address` -> add `10.0.0.2` -> `save`
+
+<img width="573" alt="Screenshot 2025-01-27 094456" src="https://github.com/user-attachments/assets/b749292a-2217-4c66-a049-088258399728" />
+
+`Apply chnages`
+
+<img width="591" alt="Screenshot 2025-01-27 094606" src="https://github.com/user-attachments/assets/4aa06e86-9bd0-4434-bbf3-e27bbd0dbe7a" />
+
+# Update Ip Address of Kali Linux
+
+Open the `Terminal` same as  before and enter this command: `ip a l eth0` this shows the current IP address
+
+<img width="427" alt="Screenshot 2025-01-27 095224" src="https://github.com/user-attachments/assets/ac7e6de4-4911-4dcf-9e90-0ade0e18ff44" />
+
+Then use this command to release the current ip and set the new static ip address: `sudo ip l set eth0 down && sudo ip l set eth0 up`
+
+use command: `ip a l eth0` to check to see if it worked.
+
+<img width="413" alt="Screenshot 2025-01-27 095559" src="https://github.com/user-attachments/assets/1bfc4dee-b657-4f10-98ab-bed38776b6c0" />
+
+# pfSense Firewall Configuration
+
+Back in the Kali Linux VM, inside the dashboard, go to the top and select `Firewall` -> `Rules`
+
+<img width="382" alt="Screenshot 2025-01-27 095833" src="https://github.com/user-attachments/assets/fcb67702-c088-4ead-99cf-c1326ea6b1c4" />
+
+Then select `LAN`
+
+<img width="621" alt="Screenshot 2025-01-27 100120" src="https://github.com/user-attachments/assets/d54d3e49-5ee3-44b9-ab23-2f6dc1cf0b3f" />
+
+Then select the highlighted arrow to `Add new rule`
+
+<img width="592" alt="Screenshot 2025-01-27 100205" src="https://github.com/user-attachments/assets/f8464be9-eeda-4978-991e-9dac1c2c5bec" />
+
+* Action: `Block`
+* Address Family: `Ipv4+IPv6`
+* Protocol: `Any`
+* Source: `LAN subnets`
+* Destination: `WAN subnets`
+* Description: `Block access to services on WAN interface`
+
+<img width="577" alt="Screenshot 2025-01-27 100552" src="https://github.com/user-attachments/assets/8789ddd6-c7c8-4d78-adcc-520441da54dc" />
+
+Then click `Save` -> `Apply Chnages`
+
+<img width="597" alt="Screenshot 2025-01-27 100647" src="https://github.com/user-attachments/assets/f83ba814-16c1-4e19-b502-a99a744ef777" />
+
+The firewall rules status, make sure they are in the correct order aswell.
+
+<img width="602" alt="Screenshot 2025-01-27 100751" src="https://github.com/user-attachments/assets/0aff2b00-354a-4928-990d-9b82f8e2d2fd" />
+
+# CYBER_RANGE Rules
+
+At the top select `Firewall` -> `Aliases`
+
+<img width="842" alt="Screenshot 2025-01-27 101042" src="https://github.com/user-attachments/assets/0578430e-ec36-4242-a7f5-20eb190df183" />
+
+Then in the `IP` tab select the `+` button
+
+<img width="593" alt="Screenshot 2025-01-27 101109" src="https://github.com/user-attachments/assets/2e832e65-fca3-4ccb-8f32-f92fc6a33084" />
+
+* Name: `RFC1918`
+* Description: `Private IPv4 Address Space`
+* Type: `Network(s)`
+* Network 1: `10.0.0.0/8`
+* Network 2: `172.16.0.0/12`
+* Network 3: `192.168.0.0/16`
+* Network 4: `169.254.0.0/16`
+* Network 5: `127.0.0.0/8`
+
+<img width="594" alt="Screenshot 2025-01-27 101824" src="https://github.com/user-attachments/assets/b9b9b902-9309-4570-8cd0-e886755fe808" />
+
+Then `save` -> `Apply Changes`
+
+<img width="601" alt="Screenshot 2025-01-27 101857" src="https://github.com/user-attachments/assets/6f2000d8-2596-441b-9bf9-e861f8a1d918" />
+
+Final Aliase look
+
+<img width="592" alt="Screenshot 2025-01-27 101946" src="https://github.com/user-attachments/assets/dac847ea-f706-4201-bf6c-7e049614e36a" />
+
+Next go back to the top and select `Firewall` -> `Rules`
+
+<img width="602" alt="Screenshot 2025-01-27 102031" src="https://github.com/user-attachments/assets/ccd2df48-aab0-4b34-bfd2-a26e1198dc53" />
+
+Select `CYBER_RANGE`
+
+<img width="592" alt="Screenshot 2025-01-27 102104" src="https://github.com/user-attachments/assets/df463889-1cb2-43ef-8a7b-f54f09147fd6" />
+
+Select the highlighted `down arrow` to `add new rule at end`
+
+<img width="592" alt="Screenshot 2025-01-27 102228" src="https://github.com/user-attachments/assets/af7454df-31bc-4d8b-85ff-1366340391ca" />
+
+* Address Family: `IPv4+IPv6`
+* Protocol: `Any`
+* Source: `CYBER_RANGE subnets`
+* Destination: `CYBER_RANGE address`
+* Description: `Allow traffic to all devices on the CYBER_RANGE network`
+
+<img width="587" alt="Screenshot 2025-01-27 102600" src="https://github.com/user-attachments/assets/d6b5ffb8-5192-4691-9414-54f943a50dc2" />
+
+Click `save` -> `Add rule to end` again
+
+<img width="583" alt="Screenshot 2025-01-27 102711" src="https://github.com/user-attachments/assets/8a0ea2f2-aac1-45a3-9c44-a287adcbfc7c" />
+
+* Protocol: `Any`
+* Source: `CYBER_RANGE subnets`
+* Destination: `Address or Alias - 10.0.0.2`
+* Description: `Allow traffic to Kali Linux VM`
+
+<img width="573" alt="Screenshot 2025-01-27 102932" src="https://github.com/user-attachments/assets/1f28d449-f46b-4316-83f9-732c225bb7c5" />
+
+Then select `save` and `add new rule to end`
+
+<img width="582" alt="Screenshot 2025-01-27 103029" src="https://github.com/user-attachments/assets/1e4aa94e-9133-4449-bdb1-ebd947a7880d" />
+
+* Protocol: `Any`
+* Source: `CYBER_RANGE subnets`
+* Destination: `Address or Alias - RFC1918 (Select Invert match)`
+* Description: `Allow to any non-private IPv4 Address`
+
+<img width="584" alt="Screenshot 2025-01-27 103239" src="https://github.com/user-attachments/assets/39592702-ce37-4943-8cf1-bb6c9092d0fc" />
+
+Select `save` -> `add new rule to end`
+
+<img width="586" alt="Screenshot 2025-01-27 103345" src="https://github.com/user-attachments/assets/2270c752-d9b9-447b-ad96-41bf90ed8d4c" />
+
+* Action: `Block`
+* Address Family: `IPv4+IPv6`
+* Protocol: `Any`
+* Source: `CYBER_RANGE subnets`
+* Description: `Block access to everything`
+
+<img width="574" alt="Screenshot 2025-01-27 103549" src="https://github.com/user-attachments/assets/5b77ac1d-5fa0-4541-823d-59e2d1e79e7f" />
+
+Select `save` -> `Apply Changes`
+
+And this is what the final rules should look like.
+
+<img width="587" alt="Screenshot 2025-01-27 103630" src="https://github.com/user-attachments/assets/98cd343c-2514-4e39-8aff-ecf037091b76" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

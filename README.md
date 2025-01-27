@@ -350,22 +350,227 @@ Attached to: `Internal Network`
 
 Adapter type: `Paravirtual Network`
 
+<img width="577" alt="Screenshot 2025-01-26 124200" src="https://github.com/user-attachments/assets/1324f810-f363-438c-8398-0e857aaf6393" />
+
+Select `OK` when complete
+
+# Kali Linux Installation
+
+Fist step is to boot up, `pfsense vm` first if it is currently shut down. 
+
+<img width="571" alt="Screenshot 2025-01-26 125422" src="https://github.com/user-attachments/assets/a991a6ad-a966-4ea2-9b06-8ad852e11ba0" />
+
+Select `Graphical Install`
+
+![Screenshot 2025-01-26 125639](https://github.com/user-attachments/assets/34031c63-9085-4165-a5a0-459e662493bd)
+
+Select the correct language, Country, and Keyboard
+
+<img width="400" alt="Screenshot 2025-01-26 125713" src="https://github.com/user-attachments/assets/c024c154-a73d-488e-b80a-1e778aeae24e" />
+
+<img width="406" alt="Screenshot 2025-01-26 125738" src="https://github.com/user-attachments/assets/5b46a719-d97d-4e12-8841-0fc0c3488af1" />
+
+<img width="401" alt="Screenshot 2025-01-26 125754" src="https://github.com/user-attachments/assets/6c8eb868-a34d-4fcf-a59e-0ae3be720cd8" />
+
+Enter a `Hostname`
+
+<img width="399" alt="Screenshot 2025-01-26 130005" src="https://github.com/user-attachments/assets/0af56e57-e8a1-4e8a-8cce-148d5251446f" />
+
+Leave `Domain Name` blank
+
+<img width="401" alt="Screenshot 2025-01-26 130102" src="https://github.com/user-attachments/assets/63f5636f-dec9-4492-9848-cfffc872ce06" />
+
+Enter your name and username
+
+<img width="399" alt="Screenshot 2025-01-26 130203" src="https://github.com/user-attachments/assets/8f7968fc-c558-4695-afd0-f6041ce84197" />
+
+<img width="398" alt="Screenshot 2025-01-26 130305" src="https://github.com/user-attachments/assets/a5f63c4a-0dcf-4365-b1ea-e9caf9a3ba79" />
+
+Add a `password` then select your timezone 
+
+![Screenshot 2025-01-26 130421](https://github.com/user-attachments/assets/f788d5c7-2f56-4e47-b73f-0d774fdcd0b5)
+
+<img width="404" alt="Screenshot 2025-01-26 130757" src="https://github.com/user-attachments/assets/b78ffcef-772c-4f98-b569-3f1c2c828b54" />
+
+<img width="396" alt="Screenshot 2025-01-26 130858" src="https://github.com/user-attachments/assets/6c2139bc-2c73-4390-a2de-90bd28d7a341" />
+
+Next select `Guided - use entire risk`
+
+<img width="398" alt="Screenshot 2025-01-26 130841" src="https://github.com/user-attachments/assets/c1d37f03-868d-4b4c-a972-7217d98c5959" />
+
+Select `All files`
+
+<img width="403" alt="Screenshot 2025-01-26 130917" src="https://github.com/user-attachments/assets/158c61e1-32cd-4369-ad94-a3dcff6c0311" />
+
+Select `Finish particioning and write to disc`
+
+<img width="401" alt="Screenshot 2025-01-26 131001" src="https://github.com/user-attachments/assets/0dc910cf-8098-434a-924a-a8950a127e26" />
+
+Select `Yes` then wait for installation.
+
+<img width="416" alt="Screenshot 2025-01-26 131043" src="https://github.com/user-attachments/assets/199e42c4-7b98-478b-baee-866b04ad8054" />
+
+For the desktop enviorment its up to personal choiice, I chose `GNOME`
+
+These are desktop environment options for Kali Linux, each offering a unique interface and user experience:
+
+`Xfce`: Lightweight, fast, and minimal, ideal for performance on systems with limited resources.
+`GNOME`: Modern, visually appealing, and feature-rich, focusing on a sleek and intuitive user interface.
+`KDE Plasma`: Highly customizable with a polished appearance, offering advanced features and options for power users.
+
+<img width="394" alt="Screenshot 2025-01-26 131610" src="https://github.com/user-attachments/assets/55afcfc5-8d0c-4a16-8d73-b53caacad384" />
+
+Wait for install
+
+<img width="400" alt="Screenshot 2025-01-26 131755" src="https://github.com/user-attachments/assets/e7c6934d-3071-41a4-968d-ae371e565912" />
+
+Select `Yes`
+
+<img width="401" alt="Screenshot 2025-01-26 133645" src="https://github.com/user-attachments/assets/ccb3b69a-89d0-4760-b902-0a1b7b6eee76" />
+
+<img width="395" alt="Screenshot 2025-01-26 133732" src="https://github.com/user-attachments/assets/830fd0a6-a3a9-491a-a7df-1083d74b80d5" />
+
+Select `Continue` to reboot.
+
+<img width="400" alt="Screenshot 2025-01-26 134043" src="https://github.com/user-attachments/assets/995c79ec-ca62-4100-8f73-2dd05e5ecceb" />
+
+Next loginto your Kali Linux Account
+
+<img width="638" alt="Screenshot 2025-01-26 134233" src="https://github.com/user-attachments/assets/c4191a33-2a1a-4902-a180-dc6ad60b4c03" />
+
+Once inside Kali Linux, open the terminal
+
+<img width="290" alt="Screenshot 2025-01-26 135301" src="https://github.com/user-attachments/assets/f712b449-a401-4308-8da0-d0f74984d5a9" />
+
+Once inside terminal run the command: `ip a`
+
+This will show the IP range that was made, also you can see it is connected to the internet as well.
+
+<img width="427" alt="Screenshot 2025-01-26 135210" src="https://github.com/user-attachments/assets/16aff80d-5cda-4a1e-9676-0115a2c4bc94" />
+
+Next enter this command to update the system: `sudo apt update && sudo apt full-upgrade` also enter password.
+
+<img width="493" alt="Screenshot 2025-01-26 135907" src="https://github.com/user-attachments/assets/5988da9b-9774-487c-9cf9-f76614274827" />
+
+Enter `Y` to continue
+
+<img width="498" alt="Screenshot 2025-01-26 140022" src="https://github.com/user-attachments/assets/ab737d20-1421-475b-bb1f-003dc7927589" />
+
+After finished run this command: `sudo apt autoremove` to remove any unused packages.
+
+<img width="498" alt="Screenshot 2025-01-26 140022" src="https://github.com/user-attachments/assets/3361eff4-8c70-480d-aa96-5623bdf2b37c" />
+
+<img width="510" alt="Screenshot 2025-01-26 143325" src="https://github.com/user-attachments/assets/0f1f9549-57dc-41da-9786-3e326a202bb9" />
+
+Feel free to delete the `.iso` file for Kali Linux.
+
+# Web Portal/ pfSense Setup
+
+Inside Kali vm open the web browser and paste http://10.0.0.1
+
+You will see this warning -> Select `Advanced` -> `Accept the Risk and Continue`
+
+<img width="471" alt="Screenshot 2025-01-26 144053" src="https://github.com/user-attachments/assets/a8a85fe8-99a8-4a45-9d1e-6e4259d27260" />
 
 
+Once at the pfSenese login menu use the default credentials:
 
+Username: `admin`
+Password: `pfsense`
 
+Then select `Next`
 
+<img width="921" alt="Screenshot 2025-01-26 144812" src="https://github.com/user-attachments/assets/fbf82cb4-3952-42a7-a35b-98452705641c" />
 
+`Next` again
 
+<img width="818" alt="Screenshot 2025-01-26 144854" src="https://github.com/user-attachments/assets/118daf68-1c9a-4c2b-9778-f794236d8d32" />
 
+Once the default menu pops up add a `Hostname` and `domain`, then uncheck `Override DNS`
 
+<img width="580" alt="Screenshot 2025-01-26 145139" src="https://github.com/user-attachments/assets/67cad4b6-5183-4289-a565-d0b25c534807" />
 
+Then select your timezone
 
+<img width="623" alt="Screenshot 2025-01-26 145410" src="https://github.com/user-attachments/assets/64592556-79ee-43fd-8680-017412fe5205" />
 
+Scroll to `RFC1918 Networks` section. Uncheck the `Block RFC1918 Private Networks` option.
 
+<img width="607" alt="Screenshot 2025-01-26 145853" src="https://github.com/user-attachments/assets/884b2df5-6427-4019-a141-98565457782e" />
 
+Leave the next page default.
 
+<img width="588" alt="Screenshot 2025-01-26 150045" src="https://github.com/user-attachments/assets/fe27b0b1-31ac-4dbf-9f85-1ec5047de429" />
 
+Enter a password and make sure to save somewhere secure.
+
+Then click `Reload`
+
+<img width="591" alt="Screenshot 2025-01-26 151557" src="https://github.com/user-attachments/assets/dd010039-b00e-4508-82b0-293a43e573f9" />
+
+Then select `Finish`
+
+<img width="573" alt="Screenshot 2025-01-26 151631" src="https://github.com/user-attachments/assets/9152033d-4161-477a-8546-893911e20489" />
+
+Now at the pfSense dashboard 
+
+<img width="592" alt="Screenshot 2025-01-26 153120" src="https://github.com/user-attachments/assets/a7a1fefb-24a2-4dcd-8674-c32547e6d18a" />
+
+Next is to change the name of the interface. Select `Interfaces` then `OPT 1`
+
+<img width="313" alt="Screenshot 2025-01-26 153819" src="https://github.com/user-attachments/assets/d8d75782-26c6-4204-bb53-31f7debd37df" />
+
+Rename `OPT 1` to `CYBER_RANGE` click `save`
+
+Then you will see the new name and a pop-up, click `Apply Changes`
+
+<img width="582" alt="Screenshot 2025-01-26 154333" src="https://github.com/user-attachments/assets/fea2d35e-a55c-4f59-9a48-85b617ea0b2b" />
+
+GO back to the top and select `Interfaces` and select `OPT 2`
+
+<img width="591" alt="Screenshot 2025-01-26 154517" src="https://github.com/user-attachments/assets/cea4838a-3fb4-4396-9b7c-149838d1ebbb" />
+
+Desription: `AD_LAB` -> scroll down select `save` -> Select `Apply changes` in pop up
+
+<img width="580" alt="Screenshot 2025-01-26 154849" src="https://github.com/user-attachments/assets/f8575688-a419-469b-bc8f-294c746b9001" />
+
+# DNS Resolver 
+
+At the top of the page select `Services` -> `DNS Resolver`
+
+<img width="339" alt="Screenshot 2025-01-26 155234" src="https://github.com/user-attachments/assets/2e1cc969-ddc8-4277-8fa5-581e38f6e73c" />
+
+Then scroll down to `DHCP Registration` and enable it, then enable `static dhcp`.
+
+<img width="577" alt="Screenshot 2025-01-26 155420" src="https://github.com/user-attachments/assets/e5dd1178-b42c-488d-bdc0-9510fa0274c3" />
+
+Dont save yet, go back to the top and select `Advanced settings`
+
+<img width="346" alt="Screenshot 2025-01-26 155515" src="https://github.com/user-attachments/assets/d274a80a-5e38-435e-9686-75f1de45e784" />
+
+Scroll down to the `Advanced Resolver Option` and enable `Prefetched Support` and `Prefetch DNS Key Support`
+
+<img width="586" alt="Screenshot 2025-01-26 155734" src="https://github.com/user-attachments/assets/06f134e5-e92f-477e-a4b2-a769e70227ba" />
+
+Then scroll down and save and apply changes.
+
+<img width="592" alt="Screenshot 2025-01-26 155840" src="https://github.com/user-attachments/assets/7904bae2-c515-447e-b4ba-76846b37bd0b" />
+
+Next go back to top and select `System` -> `Advanced`
+
+<img width="248" alt="Screenshot 2025-01-26 160157" src="https://github.com/user-attachments/assets/7acedb47-32e7-4920-926f-f471452ff96e" />
+
+Go to `Network`
+
+<img width="583" alt="Screenshot 2025-01-26 160340" src="https://github.com/user-attachments/assets/4591ab8a-0111-418c-9778-ff556364899a" />
+
+Then scroll down and disable `Hardware Checksum Offloading` 
+
+<img width="577" alt="Screenshot 2025-01-26 160502" src="https://github.com/user-attachments/assets/2f39d573-cf29-41c4-9880-0577529f7847" />
+
+Then save and click ok for popup.
+
+<img width="251" alt="Screenshot 2025-01-26 160541" src="https://github.com/user-attachments/assets/acebfa45-9731-4b0b-8363-5a6c10c017e5" />
 
 
 

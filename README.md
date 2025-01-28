@@ -1,4 +1,4 @@
-# Home-Lab
+![image](https://github.com/user-attachments/assets/c6d46b86-e6e1-47e7-92ee-7543fd7f0707)# Home-Lab
 
 
 # Overview 
@@ -810,6 +810,224 @@ Then go to `Hardware` and reduce the base memory to `1048`
 Then in `Hard Disk` select `Do Not Add a Hard Disk` since the file we downloaded has the OS pre installed.
 
 <img width="586" alt="Screenshot 2025-01-27 144158" src="https://github.com/user-attachments/assets/204c4d5d-a1ca-4543-b20e-4b13883fff51" />
+
+Next add the new VM to a new group by selecting the vm -> `Machine` -> `Move to Group` -> `New`
+
+Then select the new group -> `Machine` -> `Rename Group` -> `Cyber Range`
+
+<img width="595" alt="Screenshot 2025-01-28 090014" src="https://github.com/user-attachments/assets/f4cfe135-97d0-432e-9a27-5174feaa8351" />
+
+Next step is to add the `.vmdk` to the hard disk.
+
+Select the new vm -> `settings`
+
+<img width="592" alt="Screenshot 2025-01-28 090536" src="https://github.com/user-attachments/assets/fbdac17d-ccaa-45cb-a98f-68cd5cdf8d16" />
+
+Then select `storage` -> Then select the highlighted `adds hard disk`
+
+<img width="577" alt="Screenshot 2025-01-28 090619" src="https://github.com/user-attachments/assets/d4803dcf-53e0-4a9a-9aa9-6664dbd63dd3" />
+
+Select `Add`
+
+<img width="473" alt="Screenshot 2025-01-28 090923" src="https://github.com/user-attachments/assets/72defa80-e054-47df-a532-795ad04f73b9" />
+
+Choose the `.vdmk` file
+
+<img width="476" alt="Screenshot 2025-01-28 091025" src="https://github.com/user-attachments/assets/054771e9-9c7f-41a2-a277-d2c3e27aa32b" />
+
+This is how it should look
+
+<img width="567" alt="Screenshot 2025-01-28 091041" src="https://github.com/user-attachments/assets/caad9f72-cb55-4751-9974-2b23e77f039f" />
+
+Then go to `System` -> Change the boot order to `Hard Disk` `Optical` `Deselected Floppy` `Deselected Network`
+
+<img width="564" alt="Screenshot 2025-01-28 091306" src="https://github.com/user-attachments/assets/63ef47bc-7efc-43ee-bab9-f8f9c0873a48" />
+
+Next go to `Network` tab
+
+Then change the `Attached to`: `Internal Network` -> Name: `LAN 1` -> select `ok`
+
+<img width="424" alt="Screenshot 2025-01-28 091649" src="https://github.com/user-attachments/assets/181acf65-e841-446b-9022-2b1e64d6f5fc" />
+
+Lets check that everything is setup correctly
+
+Go to the VM and select `Start`
+
+<img width="450" alt="Screenshot 2025-01-28 092349" src="https://github.com/user-attachments/assets/a34d24b8-21a1-481e-8090-31af52c5d7b9" />
+
+Once it says to enter Username and password use:
+
+Username: `msfadmin`
+Password: `msfadmin`
+
+<img width="478" alt="Screenshot 2025-01-28 092620" src="https://github.com/user-attachments/assets/4fcf3c4c-a8e5-4937-9eee-d4f359b78579" />
+
+Then enter this command to receive ip address: `ip a l eth0`
+
+<img width="381" alt="Screenshot 2025-01-28 092738" src="https://github.com/user-attachments/assets/49299351-b82d-4bc6-b1a0-d16ce0df0e55" />
+
+Then to test connectivity you can ping 8.8.8.8 or google.com whatever you choose. I entered `ping 8.8.8.8 -c 5` this will ping to a count of 5 times.
+
+<img width="293" alt="Screenshot 2025-01-28 092858" src="https://github.com/user-attachments/assets/92c47e2e-9c06-47fb-bae1-ba15078025f6" />
+
+Check if you can connect to your Kali Linux vm: `ping 10.0.0.2 -c 5`
+
+<img width="378" alt="Screenshot 2025-01-28 093115" src="https://github.com/user-attachments/assets/e9e609c6-9d7b-471e-8c14-28101127c208" />
+
+Then we can check connectivity from Kali vm to Metasploit vm by going into the terminal of the Kali box, sending this command: `ping 10.6.6.11 -c 5` (ip address might be different for you.
+
+<img width="347" alt="Screenshot 2025-01-28 093236" src="https://github.com/user-attachments/assets/3902d262-2a69-4104-a542-7aeaea436dfc" />
+
+# Chronos VM Setup
+
+First go to: https://www.vulnhub.com/entry/chronos-1,735/
+
+And download the mirror of Chronos
+
+<img width="871" alt="Screenshot 2025-01-28 093550" src="https://github.com/user-attachments/assets/a39e4f26-5052-43b2-83c0-e88154cb80ca" />
+
+The file downloaded will be a `.ova` file
+
+<img width="580" alt="Screenshot 2025-01-28 100607" src="https://github.com/user-attachments/assets/0b2a6fd3-649a-44f5-9016-4489eab5aa0f" />
+
+Back inside VirtualBox select `Tools` -> `Import` -> select the `folder icon` -> select the newly downloaded `.ova` file.
+
+<img width="387" alt="Screenshot 2025-01-28 100721" src="https://github.com/user-attachments/assets/ac46ad8d-20b1-4c07-843a-782d275cde5b" />
+
+Select `Settings` -> reduce the RAM to `1024 MB` -> make sure MAC Address Policy: `Generate a new MAC address for all network adapters`
+
+Then add the new vm to `Cyber Range`
+
+<img width="412" alt="Screenshot 2025-01-28 101150" src="https://github.com/user-attachments/assets/19b1a9da-9ac7-40b7-aff8-9edb8143a8ac" />
+
+# Chronos VM Configuration
+
+In VirtualBox select `Chronos` -> `Settings`
+
+<img width="445" alt="Screenshot 2025-01-28 101603" src="https://github.com/user-attachments/assets/8b218828-422b-470e-b3ba-dfd2fe47223b" />
+
+Then go to `System` -> `Motherboard` then make boot order to look like this
+
+<img width="570" alt="Screenshot 2025-01-28 102519" src="https://github.com/user-attachments/assets/0ea53054-3d9c-4ca7-be50-f7408ce4d8dc" />
+
+Then go to `Network` -> Attached to: `Internal Network` -> Name: `LAN 1` -> Adapter Type: `Paravirtualized` -> `OK`
+
+<img width="573" alt="Screenshot 2025-01-28 102732" src="https://github.com/user-attachments/assets/a32652df-16ba-4b09-af92-985c700712c0" />
+
+Then go to start the VM, you will be asked for login credentials
+
+<img width="403" alt="Screenshot 2025-01-28 103125" src="https://github.com/user-attachments/assets/7f6d69d6-a9db-4864-bd79-942e954fc08b" />
+
+Since the login credentials are not known go back to the `Kali Linux VM` -> `Status` -> `DHCP Leases`
+
+<img width="590" alt="Screenshot 2025-01-28 103332" src="https://github.com/user-attachments/assets/8009cf6c-99d6-41d3-9d8c-c89c7f979d2b" />
+
+Here you can find the IP address for Chronos, to test connectivity with this info. Go into Kali Linux and ping your chronos ip: `ping 10.6.6.12 -c 5`
+
+<img width="610" alt="Screenshot 2025-01-28 103429" src="https://github.com/user-attachments/assets/9abd1e0b-4272-4be6-8737-130e0e8132f5" />
+
+It was successful
+
+<img width="280" alt="Screenshot 2025-01-28 103622" src="https://github.com/user-attachments/assets/d229fa33-cb5e-4176-afb5-4c07f76899bc" />
+
+# Active Directory Setup
+
+Parts to Active Directory:
+* VM_1 - Domain Controller (Windows Server 2019)
+* VM_2 - client (Windows 10 Enterprise)
+* VM_3 - client (Windows 10 Enterprise)
+
+First downlaod `Windows Server 2019`: https://www.microsoft.com/en-us/evalcenter/download-windows-server-2019
+
+<img width="903" alt="Screenshot 2025-01-28 104625" src="https://github.com/user-attachments/assets/1c50074b-3404-4572-bdc4-944a3dcc3f03" />
+
+Then download the `Windows 10 Enterprise`: https://www.microsoft.com/en-us/evalcenter/download-windows-10-enterprise
+
+<img width="957" alt="Screenshot 2025-01-28 133047" src="https://github.com/user-attachments/assets/3e03e15b-a9c8-4371-bce6-ee98bcc52382" />
+
+# Installing Windows Server 2019 VM
+
+Inside VirtualBox select `Tools` -> `New`
+
+<img width="553" alt="Screenshot 2025-01-28 135627" src="https://github.com/user-attachments/assets/a7099925-1824-4a7e-89f6-323089ed6be6" />
+
+Name: `Windows Server 2019` -> make sure to have the correct VM folder -> Select the `iso` image of the Windows Server 2019 -> Select `Skip unintended install`
+
+<img width="592" alt="Screenshot 2025-01-28 140228" src="https://github.com/user-attachments/assets/cd466600-a7a1-43b0-9344-e38e3b1e1d16" />
+
+Inside `Hardware` increase base memory to `4096 MB` (4 GB)
+
+<img width="597" alt="Screenshot 2025-01-28 140248" src="https://github.com/user-attachments/assets/b28ac356-59cd-4ad2-ae11-9e8ab0ecc0a4" />
+
+Then inside `Hard Disk` increase size to `100 GB` -> Select `Finish`
+
+<img width="586" alt="Screenshot 2025-01-28 140412" src="https://github.com/user-attachments/assets/2398004c-5a96-4d42-adc1-d2c5d33c2dd2" />
+
+Then I create and add this VM to a group call `Active Directory`
+
+<img width="614" alt="Screenshot 2025-01-28 140534" src="https://github.com/user-attachments/assets/b2b752e3-396d-435d-86b9-7c2975b6a7f9" />
+
+# Windows 10 Enterprise VM 1 Setup
+
+To add the new VM, select `Tools` -> `New`
+
+Then add a name: `Windows 10 Enterprise VM 1` -> correct `vm` folder -> `.iso` image of Windows 10 Enterprise that was downloaded -> Select `skip unintended install`
+
+<img width="751" alt="Screenshot 2025-01-28 141104" src="https://github.com/user-attachments/assets/698764e8-c3d1-4912-88bf-763e6bec6405" />
+
+Then for `Hardware` leave default -> inside `Hard Disk` increase size to `100 GB` -> `Finish`
+
+# Windows 10 Enterprise VM 2 Setup
+
+Same steps as last VM 
+
+<img width="751" alt="Screenshot 2025-01-28 141211" src="https://github.com/user-attachments/assets/456eebda-0c54-455a-9237-4decc31387e7" />
+
+<img width="753" alt="Screenshot 2025-01-28 141408" src="https://github.com/user-attachments/assets/27c853b1-6123-4180-9387-0ac40e419a24" />
+
+# Windows Server 2019 Configuration
+
+Select the `Windows Server VM` -> `Settings`
+
+<img width="600" alt="Screenshot 2025-01-28 141621" src="https://github.com/user-attachments/assets/b48e8aa5-c40b-4fae-b4b9-d388345f6e30" />
+
+Go to `System` -> `Motherboard` -> `Hard disk`, `Optical`, `Floppy`, `Network` like this:
+
+<img width="568" alt="Screenshot 2025-01-28 141824" src="https://github.com/user-attachments/assets/1308afba-00ca-4794-9e72-9ad8823ad6bb" />
+
+Then inside `Network` -> `Adapter 1` -> Attached to: `Internal Network` -> Name: `LAN 2` -> `ok`
+
+# Windows 10 Enterprise VM 1 Configuration
+
+Select `Wnidows 10 Enterprise VM 1` -> `Settings`
+
+<img width="589" alt="Screenshot 2025-01-28 142234" src="https://github.com/user-attachments/assets/be5ab186-c374-4f3d-8c32-9e734f4cecd4" />
+
+Go to `System` -> `Motherboard` -> `Hard disk`, `Optical`, `Floppy`, `Network` like this:
+
+<img width="573" alt="Screenshot 2025-01-28 142337" src="https://github.com/user-attachments/assets/a83515bb-41f2-4c5f-8a35-93eac8fe48d5" />
+
+Then inside `Network` -> `Adapter 1` -> Attached to: `Internal Network` -> Name: `LAN 2` -> `ok`
+
+<img width="574" alt="Screenshot 2025-01-28 142426" src="https://github.com/user-attachments/assets/e0e6a6c5-dbd9-4819-9ef5-adc2a5a8f6d3" />
+
+# Windows 10 Enterprise VM 2 Configuration
+
+Select `Wnidows 10 Enterprise VM 2` -> `Settings`
+
+<img width="516" alt="Screenshot 2025-01-28 142526" src="https://github.com/user-attachments/assets/916e46a1-848c-47b0-816c-196c5cb64a43" />
+
+Go to `System` -> `Motherboard` -> `Hard disk`, `Optical`, `Floppy`, `Network` like this:
+
+<img width="573" alt="Screenshot 2025-01-28 142606" src="https://github.com/user-attachments/assets/36a454fe-496d-4f03-8144-bf4f64172668" />
+
+Then inside `Network` -> `Adapter 1` -> Attached to: `Internal Network` -> Name: `LAN 2` -> `ok`
+
+<img width="580" alt="Screenshot 2025-01-28 142629" src="https://github.com/user-attachments/assets/25dc7d09-4dde-42e1-907c-9cefa7065439" />
+
+
+
+
 
 
 

@@ -1025,28 +1025,173 @@ Then inside `Network` -> `Adapter 1` -> Attached to: `Internal Network` -> Name:
 
 <img width="580" alt="Screenshot 2025-01-28 142629" src="https://github.com/user-attachments/assets/25dc7d09-4dde-42e1-907c-9cefa7065439" />
 
+# Windows 19 Server Setup
+
+Select the `Windows Server` vm -> `start`
+
+<img width="576" alt="Screenshot 2025-01-29 094548" src="https://github.com/user-attachments/assets/06740fea-5404-4262-925c-e4cf786cfe0c" />
+
+Click `Next`
+
+<img width="319" alt="Screenshot 2025-01-29 094934" src="https://github.com/user-attachments/assets/4d2a516c-e0b2-450b-9351-fba186dbd18c" />
+
+`Install`
+
+<img width="314" alt="Screenshot 2025-01-29 095010" src="https://github.com/user-attachments/assets/e54951a2-c67f-4881-bca7-1648eb78ac26" />
+
+Select `Windows Server 2019 Standalone Evaluation (Desktop Experience)` and click on `Next`.
+
+<img width="327" alt="Screenshot 2025-01-29 095138" src="https://github.com/user-attachments/assets/79bebb9c-2719-4186-9ebd-1a6ff5d482de" />
+
+<img width="330" alt="Screenshot 2025-01-29 095213" src="https://github.com/user-attachments/assets/46f92c58-2618-4e11-b8c2-118f1c7d5968" />
+
+Select `Custom: Install Windows only (Advanced).`
+
+<img width="320" alt="Screenshot 2025-01-29 095237" src="https://github.com/user-attachments/assets/b2af2174-51ce-4f84-a7a0-9a3a31573886" />
+
+`Next`
+
+<img width="327" alt="Screenshot 2025-01-29 095324" src="https://github.com/user-attachments/assets/2acb1559-d39a-44ae-ad6c-ce7d06adc233" />
+
+Once Instalation is complete, create a password for the admin account.
+
+![dc-9](https://github.com/user-attachments/assets/776aedf6-4457-42af-8f34-bfa05d926877)
+
+Then login
+
+<img width="509" alt="Screenshot 2025-01-29 102158" src="https://github.com/user-attachments/assets/464fe0fc-98a7-428a-9947-f5fd47ba6683" />
+
+Selct `Dont show again` -> `ok`
+
+<img width="519" alt="Screenshot 2025-01-29 102359" src="https://github.com/user-attachments/assets/b57df89d-ae41-432a-9694-eae75c887d02" />
+
+From the VM toolbar click on `Devices` -> `Optical Devices` -> `Remove disk from virtual drive`.
+
+![dc-12](https://github.com/user-attachments/assets/c2770ff1-3341-4ab2-a9d0-633aec07eba3)
+
+Then select `Devices` -> `Insert Guest Additions CD image`.
+
+![dc-13](https://github.com/user-attachments/assets/3fd30295-b328-4003-847b-2d01980c08bf)
+
+From the taskbar open `File Explorer`.
+
+<img width="518" alt="Screenshot 2025-01-29 102747" src="https://github.com/user-attachments/assets/a8e2eed5-3057-436c-b303-3ac0ab0f4d48" />
+
+Double-click on `VBoxWindowsAdditions` to start install.
+
+<img width="520" alt="Screenshot 2025-01-29 102945" src="https://github.com/user-attachments/assets/8db49415-68c5-42d5-8f76-03adf7b8aa8e" />
+
+`Next`
+
+<img width="264" alt="Screenshot 2025-01-29 103042" src="https://github.com/user-attachments/assets/9f4f6448-ad85-4d86-8f5d-2df71f2f15f6" />
+
+`Next`
+
+<img width="255" alt="Screenshot 2025-01-29 103111" src="https://github.com/user-attachments/assets/775c0d18-3782-4728-81aa-107161c0d88d" />
+
+`Install`
+
+<img width="252" alt="Screenshot 2025-01-29 103145" src="https://github.com/user-attachments/assets/77efc00a-de4b-4525-a11c-212ae746b786" />
+
+Select `Reboot Now` -> `Finish`
+
+<img width="249" alt="Screenshot 2025-01-29 103244" src="https://github.com/user-attachments/assets/1ef9bd40-0193-4b5f-8241-ff9b9f98bf16" />
+
+After restart, log into the system. From the VM toolbar click on `Devices` -> `Optical Drivers` -> `Remove disk from virtual drive` to remove the Guest Additions image.
+
+Use the shortcut `Right Ctrl+F` to enter Fullscreen mode.
+
+<img width="517" alt="Screenshot 2025-01-29 103757" src="https://github.com/user-attachments/assets/50609cf7-ff01-40a6-b62c-0aab206ebdb0" />
+
+# Network Configuration
+
+Inside the Windows Server VM, select the `Network Icon` in the bottom right. Then select `Open Network & Internet Settings`
+
+<img width="202" alt="Screenshot 2025-01-29 104243" src="https://github.com/user-attachments/assets/df8dc39c-87e9-464d-a8d5-4a9fc10d527c" />
+
+Select `Change Adapter Options`
+
+<img width="508" alt="Screenshot 2025-01-29 104313" src="https://github.com/user-attachments/assets/f48a6392-2a4b-4f09-a5e8-163a614b15d9" />
+
+Right click `Ethernet` -> `Properties`
+
+<img width="298" alt="Screenshot 2025-01-29 104513" src="https://github.com/user-attachments/assets/f4a8621b-4e26-4e5c-a5d2-13d79ab7c5db" />
+
+Select `Internet Protocol Version 4 (TCP/IPv4)` -> `click on Properties`
+
+<img width="185" alt="Screenshot 2025-01-29 104616" src="https://github.com/user-attachments/assets/6ab7fff6-9f27-47a3-b987-0cece0d7e4ad" />
+
+* IP address: `10.80.80.2`
+* Subnet mask: `255.255.255.0`
+* Default gateway: `10.80.80.1`
+* Preferred DNS Server: `10.80.80.2`
+
+<img width="196" alt="Screenshot 2025-01-29 104822" src="https://github.com/user-attachments/assets/3e91f88d-b1d1-4e71-97ff-6b2b512c80c2" />
+
+<img width="765" alt="Screenshot 2025-01-29 104924" src="https://github.com/user-attachments/assets/d5391a1c-eaff-469e-927e-39c0fabc9574" />
 
 
+In the settings `Home` select `System`
 
+<img width="491" alt="Screenshot 2025-01-29 105035" src="https://github.com/user-attachments/assets/7a771e33-e9b3-481c-9fc7-ae4d2673e30d" />
 
+Select `About`
 
+<img width="254" alt="Screenshot 2025-01-29 105115" src="https://github.com/user-attachments/assets/3344a6c9-6373-429d-aa31-699102b55187" />
 
+`Rename PC`: `DC1` -> `ok` -> `restart now`
 
+<img width="499" alt="Screenshot 2025-01-29 105158" src="https://github.com/user-attachments/assets/c8aaf936-63ed-40e0-8422-b906d5943f6a" />
 
+<img width="340" alt="Screenshot 2025-01-29 105216" src="https://github.com/user-attachments/assets/7a9d1c3f-231c-45ad-a021-d4f50126dba0" />
 
+Once restart is complete, back in `Server Manager` -> Select `manage` -> `Add Roles and Features`
 
+<img width="953" alt="Screenshot 2025-01-29 110040" src="https://github.com/user-attachments/assets/29182056-f5c8-40cf-957e-85baf4bf1872" />
 
+Select `Next` then `Next again
 
+<img width="391" alt="Screenshot 2025-01-29 110207" src="https://github.com/user-attachments/assets/f7b5fbf9-ae14-4ebc-b521-78fe41ad5b34" />
 
+In `Server Roles` select  `Active Directory Domain Services` and `DNS Server`
 
+When you enable a feature the `Add Roles and Features Wizard` will open click on `Add Features` to confirm the selection.
 
+`Next` once complete
 
+<img width="390" alt="Screenshot 2025-01-29 111027" src="https://github.com/user-attachments/assets/07f70891-1deb-4342-897a-a7b9ad71962a" />
 
+Click `Confirmation Page` then `Install`
 
+<img width="394" alt="Screenshot 2025-01-29 111107" src="https://github.com/user-attachments/assets/d68fabcd-c854-4032-8048-b968208d9b6f" />
 
+<img width="392" alt="Screenshot 2025-01-29 111520" src="https://github.com/user-attachments/assets/4d84ff6d-b09d-400e-832e-ff26acf68b42" />
 
+Next, select the flag in the top right with an explination mark. Then `promote to domain controller`
 
+<img width="958" alt="Screenshot 2025-01-29 111632" src="https://github.com/user-attachments/assets/771842b1-4991-4263-906e-3c54015f23ea" />
 
+For Deployment Configuration: Select `Add New Forest` -> Give name: `ad.lab`
+
+Make sure if you are not naming this, to use this format [word_1.word_2]
+
+Then clck `Next` -> then assign a password -> `Next`
+
+<img width="376" alt="Screenshot 2025-01-29 112519" src="https://github.com/user-attachments/assets/8c9b1d21-25bb-488d-9f0e-dae0c4502df5" />
+
+<img width="382" alt="Screenshot 2025-01-29 112605" src="https://github.com/user-attachments/assets/b7cf062a-cc10-4371-8ecd-0987951bd031" />
+
+<img width="376" alt="Screenshot 2025-01-29 112921" src="https://github.com/user-attachments/assets/7dec916e-be21-42a3-b3be-31770dfb4883" />
+
+<img width="376" alt="Screenshot 2025-01-29 112958" src="https://github.com/user-attachments/assets/f078b966-4664-4e19-bac8-a36feabd14df" />
+
+<img width="375" alt="Screenshot 2025-01-29 113024" src="https://github.com/user-attachments/assets/c6fee7c3-9511-4715-b5b8-07bb525c5260" />
+
+<img width="376" alt="Screenshot 2025-01-29 113136" src="https://github.com/user-attachments/assets/52cc774a-4554-439f-a6ed-4a0c53e274c7" />
+
+You will see the `AD` before your Name now if successful.
+
+<img width="378" alt="Screenshot 2025-01-29 113626" src="https://github.com/user-attachments/assets/87a4b741-4c2e-4ea5-a4b4-813004b07a49" />
 
 
 

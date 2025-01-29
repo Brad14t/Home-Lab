@@ -1193,6 +1193,184 @@ You will see the `AD` before your Name now if successful.
 
 <img width="378" alt="Screenshot 2025-01-29 113626" src="https://github.com/user-attachments/assets/87a4b741-4c2e-4ea5-a4b4-813004b07a49" />
 
+# DNS Configuration
+
+Since we enabled DNS on the Domain Controller (DC), it will serve as the DNS server for devices in the ad.lab environment. To ensure proper functionality, we need to set up a Forwarder, which will send unresolved DNS queries to pfSense, allowing pfSense to complete the lookup.
+
+Go to the windows logo and look for `Windows Administrative Tools`
+
+<img width="313" alt="Screenshot 2025-01-29 133530" src="https://github.com/user-attachments/assets/87cc7604-fb9a-4841-8989-4e0685f80f6e" />
+
+Then select `DNS`
+
+<img width="315" alt="Screenshot 2025-01-29 133632" src="https://github.com/user-attachments/assets/b3582772-271b-441b-a103-fa85fe5ae5fd" />
+
+Click `DC1` -> double click `Forwarders`
+
+<img width="284" alt="Screenshot 2025-01-29 133757" src="https://github.com/user-attachments/assets/715464bb-bbf4-4709-b3f1-ddb53bf853d4" />
+
+`Edit`
+
+<img width="197" alt="Screenshot 2025-01-29 133831" src="https://github.com/user-attachments/assets/2e223a2b-924f-414f-bd14-e8ebe774e451" />
+
+Enter the ip adress of the `AD_LAB`: `10.80.80.1` -> `Enter` -> `OK`
+
+<img width="262" alt="Screenshot 2025-01-29 134131" src="https://github.com/user-attachments/assets/05b9ccdb-b891-4516-8755-1fb37fa94e3c" />
+
+`Apply` -> `OK`
+
+<img width="199" alt="Screenshot 2025-01-29 134254" src="https://github.com/user-attachments/assets/19c1b41f-4255-4d3f-bea4-bd48085c7240" />
+
+# DHCP Configuration
+
+Since DHCP is disabled on the `AD_LAB`, they arent being assigned an IP when connecting. To fix this we need to enable DHCP service.
+
+Inside Windows Server 2019 vm go to `Manage` -> `Add Roles and Features`
+
+<img width="198" alt="Screenshot 2025-01-29 134747" src="https://github.com/user-attachments/assets/16d8b249-b1e3-4d10-b857-9c1345df8e84" />
+
+Click `Next` till you get to `Server Role` -> Enable `DHCP Server` -> `Add Features`
+
+<img width="394" alt="Screenshot 2025-01-29 135000" src="https://github.com/user-attachments/assets/8770ee39-26e4-4758-bdd4-98d51ac80626" />
+
+Click `Next` till you reach `Confirmation` -> then click `Install`
+
+<img width="385" alt="Screenshot 2025-01-29 135303" src="https://github.com/user-attachments/assets/b07f1496-aa47-4711-8aca-ffc79cd2a2ca" />
+
+Next click on the flag at the top -> select `Complete DHCP Configuration`
+
+<img width="300" alt="Screenshot 2025-01-29 135958" src="https://github.com/user-attachments/assets/89113eb2-14bc-48b6-8bd6-544dfa6cb001" />
+
+`Commit`
+
+<img width="378" alt="Screenshot 2025-01-29 140117" src="https://github.com/user-attachments/assets/8849239b-cb1f-4fa2-a510-caab8dcdc3dd" />
+
+After completion, go to the windows logo in the bottom left -> `Windows Administrative Tools` and then choose `DHCP`
+
+<img width="325" alt="Screenshot 2025-01-29 140334" src="https://github.com/user-attachments/assets/6b72deb3-a572-46d7-8a74-7ad10838b4ab" />
+
+Choose your DHCP server: `dc1.ad.lab`
+
+<img width="296" alt="Screenshot 2025-01-29 140438" src="https://github.com/user-attachments/assets/61d7d6d1-7181-4525-8e4e-2abb850d49ca" />
+
+Select `IPv4` -> `New Scope` this will give the scope of DHCP
+
+<img width="295" alt="Screenshot 2025-01-29 140856" src="https://github.com/user-attachments/assets/e0c4cd2a-7601-43d9-bb94-43b912de26b0" />
+
+<img width="262" alt="Screenshot 2025-01-29 140919" src="https://github.com/user-attachments/assets/8392780d-dcf0-474d-812b-9ab500945da6" />
+
+* Name: `AD Lab` 
+* Description: `Default DHCP for Ad Lab`
+
+<img width="255" alt="Screenshot 2025-01-29 141000" src="https://github.com/user-attachments/assets/730b0cb9-027b-490c-9412-4f802bb1f6b8" />
+
+* Start IP address: `10.80.80.11`
+* End IP address: `10.80.80.253`
+* Length: `24`
+* Subnet mask: `255.255.255.0`
+
+<img width="257" alt="Screenshot 2025-01-29 141317" src="https://github.com/user-attachments/assets/1d6d8546-40cf-4a22-a5e1-3576de5ac8c9" />
+
+`Next`
+
+<img width="261" alt="Screenshot 2025-01-29 141342" src="https://github.com/user-attachments/assets/61c86e3c-5fb6-45e2-8859-965e8ae301fd" />
+
+Change to `365 Days`
+
+<img width="259" alt="Screenshot 2025-01-29 141442" src="https://github.com/user-attachments/assets/05574de4-a9ee-4f5a-9678-d2a55dc16d24" />
+
+`Yes, I want to configure these options now`
+
+<img width="255" alt="Screenshot 2025-01-29 141521" src="https://github.com/user-attachments/assets/2b75d18b-7ef2-4fdd-bf87-37c782a228a3" />
+
+In the IP address field enter the default gateway for the AD_LAB interface `10.80.80.1` and then click on `Add`. Once added click on `Next`.
+
+![dc-57](https://github.com/user-attachments/assets/19475ad2-f87d-4205-8663-f78ff2d7cd09)
+
+`Next`
+
+<img width="254" alt="Screenshot 2025-01-29 141707" src="https://github.com/user-attachments/assets/eb75daa1-779f-4877-b768-059a560d45b3" />
+
+`Next`
+
+<img width="256" alt="Screenshot 2025-01-29 141803" src="https://github.com/user-attachments/assets/9c5faff5-d961-41fc-9707-a3f08eccdb14" />
+
+`Yes, I want to activate this scope now`
+
+<img width="256" alt="Screenshot 2025-01-29 141834" src="https://github.com/user-attachments/assets/3b6a73d8-190c-49e0-8197-1a84b9d5852c" />
+
+<img width="256" alt="Screenshot 2025-01-29 141925" src="https://github.com/user-attachments/assets/41b8bf7c-279d-4c0a-a595-e9f7072362eb" />
+
+# Domain Configuration
+
+Select `Manage` from the top right corner of Server Manager and then select `Add Roles and Features`
+
+<img width="178" alt="Screenshot 2025-01-29 143826" src="https://github.com/user-attachments/assets/e8ae058a-6d82-43ef-950c-62c95f18b262" />
+
+Click `Next` till you get to `Server Roles` -> Enable `Active Directory Certificate Services`
+
+<img width="391" alt="Screenshot 2025-01-29 144253" src="https://github.com/user-attachments/assets/da282a52-929e-43e0-97f0-0e723d06492b" />
+
+<img width="389" alt="Screenshot 2025-01-29 144307" src="https://github.com/user-attachments/assets/42bbb388-a1d6-4a23-ba07-6aa8748794ea" />
+
+<img width="392" alt="Screenshot 2025-01-29 144555" src="https://github.com/user-attachments/assets/a1f48a37-e120-4dda-97dd-15bb47884eaf" />
+
+Click `Next` till you get to `Role Services`
+
+<img width="392" alt="Screenshot 2025-01-29 144709" src="https://github.com/user-attachments/assets/5b08e4d6-ff45-44a9-afa8-06940572734d" />
+
+<img width="388" alt="Screenshot 2025-01-29 144731" src="https://github.com/user-attachments/assets/3586a967-f993-4ec2-b387-ec017ce1f81d" />
+
+Enable `Certificate Authority`
+
+<img width="388" alt="Screenshot 2025-01-29 144754" src="https://github.com/user-attachments/assets/8a7384d9-eda0-4499-b322-b2559496607b" />
+
+`Install`
+
+<img width="394" alt="Screenshot 2025-01-29 144920" src="https://github.com/user-attachments/assets/72efd62b-e365-4348-b301-f5857e13c8cb" />
+
+`Close`
+
+<img width="393" alt="Screenshot 2025-01-29 145028" src="https://github.com/user-attachments/assets/80133499-fb00-4e26-92dd-401c130c6947" />
+
+Then restart computer, click windows logo -> `Restart` -> `Continue`
+
+<img width="198" alt="Screenshot 2025-01-29 145403" src="https://github.com/user-attachments/assets/2cfe9313-81e7-4113-acce-b16266e567bd" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

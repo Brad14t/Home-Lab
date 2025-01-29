@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/c6d46b86-e6e1-47e7-92ee-7543fd7f0707)# Home-Lab
+# Home-Lab
 
 
 # Overview 

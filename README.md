@@ -1556,10 +1556,13 @@ Then right click `Registry`-> `New` -> `Registry Item`
 
 <img width="397" alt="Screenshot 2025-01-30 114837" src="https://github.com/user-attachments/assets/9428abae-a768-42f8-970a-cd4713fc3604" />
 
+Hive: `HKEY_LOCAL_MACHINE` -> Key Path select `...` -> `SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System` -> `Select`
 
+<img width="207" alt="Screenshot 2025-01-30 115222" src="https://github.com/user-attachments/assets/237ede83-85f6-4611-b4f4-9d5980014a10" />
 
-
-
+* Value name: `LocalAccountTokenFilterPolicy`
+* Value type: `REG_DWORD`
+* Value data: `1`
 
 
 

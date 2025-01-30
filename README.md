@@ -1337,21 +1337,142 @@ Then restart computer, click windows logo -> `Restart` -> `Continue`
 
 <img width="198" alt="Screenshot 2025-01-29 145403" src="https://github.com/user-attachments/assets/2cfe9313-81e7-4113-acce-b16266e567bd" />
 
+# Certificate Service Configuration
 
+Once the restart is complete select the flag in the top right -> select `Configure Active Directory Certificate Services`
 
+<img width="293" alt="Screenshot 2025-01-30 093606" src="https://github.com/user-attachments/assets/1f94ea44-3725-4dd0-aabd-57fa382322da" />
 
+`Next`
 
+<img width="379" alt="Screenshot 2025-01-30 093837" src="https://github.com/user-attachments/assets/b3001e41-3fe9-46ef-b2e0-42066b383703" />
 
+Enable `Certification Authority`
 
+<img width="376" alt="Screenshot 2025-01-30 093919" src="https://github.com/user-attachments/assets/efa16e5b-059f-4943-870d-f8a1f0c2e4a2" />
 
+`Next`
 
+<img width="379" alt="Screenshot 2025-01-30 093957" src="https://github.com/user-attachments/assets/ecb7f4b3-2033-4373-96e9-eb69e92637da" />
 
+`Next`
 
+<img width="379" alt="Screenshot 2025-01-30 094026" src="https://github.com/user-attachments/assets/1127ad6a-924d-4e16-a72e-ae4d6e36a02d" />
 
+Click on `Next` till you reach the Confirmation page
 
+<img width="377" alt="Screenshot 2025-01-30 094248" src="https://github.com/user-attachments/assets/53b1bf27-7c02-49d5-9135-0c33944bf4b8" />
 
+`Close`
 
+<img width="378" alt="Screenshot 2025-01-30 094315" src="https://github.com/user-attachments/assets/34beaf46-58c3-41df-a0e6-c934f29bd1fd" />
 
+# User Configuration
+
+Inside the `Start Menu` select `Administrative Tools` -> `Active Directory Users and Computers`
+
+<img width="325" alt="Screenshot 2025-01-30 094645" src="https://github.com/user-attachments/assets/2b260ad2-617f-47a5-a1ce-19e1780a5223" />
+
+right click `ad.lab` -> `New` -> `User`
+
+<img width="380" alt="Screenshot 2025-01-30 095028" src="https://github.com/user-attachments/assets/281a51b0-346c-4d5d-8bfd-0d074252ce0e" />
+
+This will be the administrator for the DC
+
+Add a name and user login
+
+<img width="216" alt="Screenshot 2025-01-30 095255" src="https://github.com/user-attachments/assets/d7d4aa5a-d94a-4fa4-93a9-bda65d956644" />
+
+Enter a Password for the user 
+
+Uncheck all options leaving `Password never expires` -> `Next`
+
+<img width="216" alt="Screenshot 2025-01-30 095451" src="https://github.com/user-attachments/assets/e0bd9f82-ac76-4a11-a100-2d9996ccb848" />
+
+`Finish`
+
+<img width="216" alt="Screenshot 2025-01-30 095519" src="https://github.com/user-attachments/assets/59d08745-af4d-4a7b-a887-8120acd6d113" />
+
+Expand the arrow next to `ad.lab` -> `Users` -> Double click `Domain Admins`
+
+<img width="373" alt="Screenshot 2025-01-30 101110" src="https://github.com/user-attachments/assets/48e42841-c5f1-4274-b5ad-e5aa59b3ae1d" />
+
+`Members` -> `Add`
+
+<img width="201" alt="Screenshot 2025-01-30 101144" src="https://github.com/user-attachments/assets/4fb04768-3b2c-4a84-b8e5-b9e20e88dd75" />
+
+Enter name -> `Check names`
+
+<img width="234" alt="Screenshot 2025-01-30 101235" src="https://github.com/user-attachments/assets/f51ddc10-0f00-43c3-a304-146f6e8c880b" />
+
+`OK`
+
+<img width="229" alt="Screenshot 2025-01-30 101445" src="https://github.com/user-attachments/assets/e408b721-4862-42ea-af9f-d0725d960bcf" />
+
+`Apply` -> `OK`
+
+<img width="200" alt="Screenshot 2025-01-30 101523" src="https://github.com/user-attachments/assets/df0e73ca-6e6d-428d-84a4-a9a5daae199a" />
+
+Next select the `User Icon` -> select `Sign out`
+
+<img width="323" alt="Screenshot 2025-01-30 101627" src="https://github.com/user-attachments/assets/b66243f1-e53c-4cad-82a8-d6cb5b5d0961" />
+
+Sign in wiht `other user` use credentials just made.
+
+<img width="597" alt="Screenshot 2025-01-30 101708" src="https://github.com/user-attachments/assets/81f6bd88-44f3-4642-8279-d8986a61b5cf" />
+
+# User 1 Setup
+
+Open the `Start menu` -> Select `Windows Administrative Tools` -> `Active Directory Users and Computers`
+
+<img width="333" alt="Screenshot 2025-01-30 102029" src="https://github.com/user-attachments/assets/403f6762-da17-4877-b619-dd027d633981" />
+
+Right click `ad.lab` -> `New` -> `User`
+
+<img width="376" alt="Screenshot 2025-01-30 102142" src="https://github.com/user-attachments/assets/5841ad2d-1c24-401f-b64c-70082d26fea5" />
+
+Enter a name and login
+
+<img width="211" alt="Screenshot 2025-01-30 102224" src="https://github.com/user-attachments/assets/4568a0c7-4ba9-4b43-b128-ce3e45f0f892" />
+
+Enter a password and only select `User cannot change password` and `password never expires`
+
+<img width="216" alt="Screenshot 2025-01-30 102442" src="https://github.com/user-attachments/assets/e9937843-8914-4191-a779-ab79d894ca6a" />
+
+# User 2 Setup
+
+Right click `ad.lab` -> `New` -> `User`
+
+Fill in a name and login
+
+<img width="214" alt="Screenshot 2025-01-30 102658" src="https://github.com/user-attachments/assets/7061eb1e-2f32-4eb6-bc9b-ccf8c82db61f" />
+
+Enter a password and only select `User cannot change password` and `password never expires`
+
+<img width="218" alt="Screenshot 2025-01-30 102742" src="https://github.com/user-attachments/assets/d5e1bb24-0070-4d93-afb7-567ce27a7daf" />
+
+# Making AD Lab Exploitable
+
+Right-click on the `Start menu` and select `Windows PowerShell (Admin)`
+
+![dc-91](https://github.com/user-attachments/assets/1703c1bc-298c-4def-af8d-0d55a3c4a96e)
+
+Run this command: `Set-ExecutionPolicy -ExecutionPolicy Bypass -Force`
+
+This command sets the PowerShell execution policy to Bypass, allowing all scripts to run without restrictions, and it does so without asking for confirmation.
+
+<img width="269" alt="Screenshot 2025-01-30 103657" src="https://github.com/user-attachments/assets/89ed1bcd-ebe1-410a-9611-de06bf649651" />
+
+Next use this command: 
+`[System.Net.WebClient]::new().DownloadString('https://raw.githubusercontent.com/WaterExecution/vulnerable-AD-plus/master/vulnadplus.ps1') -replace 'change\.me', 'ad.lab' | Invoke-Expression`
+
+What does this command do overall?
+
+It downloads a PowerShell script (vulnadplus.ps1) from a GitHub repository.
+
+It modifies the script by replacing the string change.me with ad.lab.
+
+It executes the modified script directly in memory.
 
 
 

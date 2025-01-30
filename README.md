@@ -1474,6 +1474,100 @@ It modifies the script by replacing the string change.me with ad.lab.
 
 It executes the modified script directly in memory.
 
+![dc-122](https://github.com/user-attachments/assets/9bb41b21-7e37-4981-98e3-b18e2529d27d)
+
+Select `Start menu` and click on `Windows Administrative Tools` then choose `Group Policy Management`
+
+<img width="318" alt="Screenshot 2025-01-30 110842" src="https://github.com/user-attachments/assets/0184a111-4fd5-4237-af1b-32b194d7a5b2" />
+
+Right-click `ad.lab` -> Select `Create a GPO in the domain and link here`
+
+<img width="478" alt="Screenshot 2025-01-30 111122" src="https://github.com/user-attachments/assets/aed24f80-bee6-4190-8831-20d98a3b444e" />
+
+Name: `Disable Protections`
+
+<img width="209" alt="Screenshot 2025-01-30 111232" src="https://github.com/user-attachments/assets/7187228f-3dc6-4a1e-bf41-483ec1a2f82c" />
+
+Right click `Disable Protections` -> `Edit`
+
+<img width="241" alt="Screenshot 2025-01-30 111609" src="https://github.com/user-attachments/assets/bdd7e9c8-b251-4db6-9cb7-f5ad2101a46d" />
+
+Inside `Group Policy Management Editor` -> `Computer Configuration` -> `Policies` -> `Administrative Templates` -> `Windows Components` -> `Windows Defender Antivirus`
+
+Select `Windows Defender Antivirus`
+
+<img width="391" alt="Screenshot 2025-01-30 111841" src="https://github.com/user-attachments/assets/65152afc-a0ec-40dd-afe7-38171ab4e1b0" />
+
+Select `Turn off Windows Defender Antivirus` -> `Edit policy setting`
+
+<img width="390" alt="Screenshot 2025-01-30 112149" src="https://github.com/user-attachments/assets/6a63c630-f568-4391-bdd1-ab03bbfde951" />
+
+Set to `Enabled` -> `Apply` -> `OK`
+
+<img width="347" alt="Screenshot 2025-01-30 112240" src="https://github.com/user-attachments/assets/e79fd355-485e-4649-a397-d6f2a913a6f5" />
+
+Double-click on `Real-time Protection`
+
+<img width="389" alt="Screenshot 2025-01-30 112850" src="https://github.com/user-attachments/assets/c95b97b4-46ae-413d-83bf-07007c70ab33" />
+
+Select `Turn off real-time protection` and then click on `Edit policy settings`
+
+<img width="391" alt="Screenshot 2025-01-30 113202" src="https://github.com/user-attachments/assets/0f00a7d2-e36b-4c3c-86b2-040d159ad092" />
+
+`Enable` -> `Apply` -> `OK`
+
+<img width="348" alt="Screenshot 2025-01-30 113251" src="https://github.com/user-attachments/assets/e548af94-7b7b-4323-b990-048acd8ca795" />
+
+Next in the sidebar `Computer Configuration` -> `Policies` -> `Administrative Templates` -> `Network` -> `Network Connections` -> `Windows Defender Firewall` -> `Domain Profile`
+
+<img width="388" alt="Screenshot 2025-01-30 113530" src="https://github.com/user-attachments/assets/5b9f9bd8-bb42-4b84-a1d1-6ca212131a21" />
+
+Select `Windows Defender Firewall: Protect all network connections` -> `Edit Policy`
+
+<img width="440" alt="Screenshot 2025-01-30 113623" src="https://github.com/user-attachments/assets/a440862a-81b1-4802-a6d4-063ba299a7b7" />
+
+`Disable` -> `Apply` -> `OK`
+
+<img width="342" alt="Screenshot 2025-01-30 113725" src="https://github.com/user-attachments/assets/84a33671-2269-4d09-aa43-b71639903fe3" />
+
+Close Group Policy Management Editor.
+
+From the sidebar of `Group Policy Management` right-click on `Disable Protections` and choose `Enforced`.
+
+<img width="376" alt="Screenshot 2025-01-30 113900" src="https://github.com/user-attachments/assets/9396ab01-e640-4cf8-8350-1acf4c61bb55" />
+
+Next is enabling remote login for Local Admins
+
+Right click `ad.lab` -> Select `Create a GPO in the domain and link here`
+
+<img width="228" alt="Screenshot 2025-01-30 114232" src="https://github.com/user-attachments/assets/59a0956d-03ee-4113-be9e-a326ae15d272" />
+
+Name: `Local Admin Remote Login`
+
+<img width="208" alt="Screenshot 2025-01-30 114339" src="https://github.com/user-attachments/assets/70d58789-c3b7-4ef2-b7e6-f2f911d7edca" />
+
+Right-click `Local Admin Remote Login` and choose `Edit`
+
+<img width="245" alt="Screenshot 2025-01-30 114642" src="https://github.com/user-attachments/assets/bec9ec60-5257-47f7-9106-6395f47748d5" />
+
+In the sidebar select `Computer Configuration` -> `Preferences` -> `Windows Settings` -> `Registry`
+
+Then right click `Registry`-> `New` -> `Registry Item`
+
+<img width="397" alt="Screenshot 2025-01-30 114837" src="https://github.com/user-attachments/assets/9428abae-a768-42f8-970a-cd4713fc3604" />
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1564,19 +1564,135 @@ Hive: `HKEY_LOCAL_MACHINE` -> Key Path select `...` -> `SOFTWARE\Microsoft\Windo
 * Value type: `REG_DWORD`
 * Value data: `1`
 
+<img width="198" alt="Screenshot 2025-01-30 115346" src="https://github.com/user-attachments/assets/99601270-3866-48a2-ae02-7ffee6897154" />
 
+Right click `ad.lab` Select `Create a GPO in the domain and link here`
 
+<img width="235" alt="Screenshot 2025-01-30 134833" src="https://github.com/user-attachments/assets/1512a3d5-2d95-46b9-872f-5c372b710b7f" />
 
+Name: `Enable WinRM Server`
 
+<img width="196" alt="Screenshot 2025-01-30 134910" src="https://github.com/user-attachments/assets/6d7a789c-0af0-4f8a-a294-9a74cecde73c" />
 
+Right-click `Enable WinRM Server` -> `Edit`
 
+<img width="214" alt="Screenshot 2025-01-30 135011" src="https://github.com/user-attachments/assets/1b4642f4-5edf-49e3-ae73-928fb6d7c595" />
 
+In the sidebar go to `Computer Configuration` -> `Policies` -> `Administrative Templates` -> `Windows Components` -> `Windows Remote Management (WinRM)` -> `WinRM Service`
 
+<img width="393" alt="Screenshot 2025-01-30 135251" src="https://github.com/user-attachments/assets/f5e1fc10-b347-4a4b-89f9-f8a204a1085c" />
 
+Select `Allow remote server management through WinRM` -> `Edit policy settings`
 
+<img width="397" alt="Screenshot 2025-01-30 140117" src="https://github.com/user-attachments/assets/31e0d9f8-32ee-411a-b52d-9f595a431cd7" />
 
+* Select `Enable` -> IPv4: `*` -> `Apply` -> `OK`
 
+<img width="351" alt="Screenshot 2025-01-30 140248" src="https://github.com/user-attachments/assets/e93222fd-7eed-488e-a209-00c5289910d6" />
 
+`Allow Basic authentication` -> `Edit policy settings`
+
+<img width="388" alt="Screenshot 2025-01-30 140401" src="https://github.com/user-attachments/assets/91906102-9c69-49e4-a8f1-a7b443161848" />
+
+`Enable` -> `Apply` -> `OK`
+
+<img width="347" alt="Screenshot 2025-01-30 140436" src="https://github.com/user-attachments/assets/430258a1-75e9-47e9-8e7e-5839f2997d4c" />
+
+`Allow unencrypted traffic` -> `Edit policy settings`
+
+<img width="391" alt="Screenshot 2025-01-30 140535" src="https://github.com/user-attachments/assets/2a0837f6-2701-43c8-ae39-4cc8801a9d9a" />
+
+`Enable` -> `Apply` -> `OK`
+
+<img width="344" alt="Screenshot 2025-01-30 140604" src="https://github.com/user-attachments/assets/4dfd876f-7f96-4c16-8efc-6a2bf9ee9fff" />
+
+`Computer Configuration` -> `Preferences` -> `Control Panel Settings` -> Right-click `Services` -> `New` -> `Service`
+
+<img width="392" alt="Screenshot 2025-01-30 140751" src="https://github.com/user-attachments/assets/0a30f9f1-032f-48ba-a119-09e34c80a9d6" />
+
+Startup: `Automatic` -> Select `...`
+
+<img width="199" alt="Screenshot 2025-01-30 140919" src="https://github.com/user-attachments/assets/9f030a4a-855e-436b-9787-a98668bce48c" />
+
+Select `Windows Remote Management (WS-Management)`
+
+<img width="230" alt="Screenshot 2025-01-30 141105" src="https://github.com/user-attachments/assets/0b7e6e67-8359-4f37-93af-6a61ff9ca705" />
+
+Service action: `Start servic` -> `Apply` -> `OK`
+
+<img width="199" alt="Screenshot 2025-01-30 141150" src="https://github.com/user-attachments/assets/bfb4f64b-be12-44ad-bf03-52c4fe1724a6" />
+
+In the sidebar `Computer Configuration` -> `Policies` -> `Administrative Templates` -> `Windows Components` -> `Windows Remote Shell`
+
+`Allow Remote Shell Access` -> `Edit policy setting`
+
+<img width="391" alt="Screenshot 2025-01-30 141714" src="https://github.com/user-attachments/assets/c10dd657-aae4-46c2-b6a5-5226b6cb761f" />
+
+`Enable` -> `Apply` -> `OK`
+
+<img width="346" alt="Screenshot 2025-01-30 141747" src="https://github.com/user-attachments/assets/bba38f13-6e29-45e4-9d8b-ca455d09f65c" />
+
+Right click `ad.lab` -> `Create a GPO in the domain and link here`
+
+<img width="216" alt="Screenshot 2025-01-30 141848" src="https://github.com/user-attachments/assets/414c73d2-c5a2-49b9-a0c3-0b5a2ea7c67f" />
+
+`Enable` -> `OK`
+
+<img width="197" alt="Screenshot 2025-01-30 141943" src="https://github.com/user-attachments/assets/28b06284-f5f0-492d-a5b5-b6a1f1322e29" />
+
+Right click `Enable RDP` -> `Edit`
+
+<img width="286" alt="Screenshot 2025-01-30 142013" src="https://github.com/user-attachments/assets/30dae32e-ec5b-4c99-973b-fcc93672dd63" />
+
+`Computer Configuration` -> `Policies` -> `Administrative Templates` -> `Windows Components` -> `Remote Desktop Services` -> `Remote Desktop Session Host` -> `Connections`
+
+`Allow users to connect remotely using Remote Desktop Services` -> `Edit policy settings`
+
+<img width="390" alt="Screenshot 2025-01-30 142414" src="https://github.com/user-attachments/assets/0a37f018-d462-41df-b101-aeb14c2f62c1" />
+
+`Enable` -> `Apply` -> `OK`
+
+<img width="351" alt="Screenshot 2025-01-30 142446" src="https://github.com/user-attachments/assets/38356bf3-1640-41f5-ace6-6b86f07eb5fa" />
+
+Enable RPC (Remote Procedure Call)
+
+Right click `ad.lab` -> `Create a GPO in the domain and link here`
+
+<img width="241" alt="Screenshot 2025-01-30 142554" src="https://github.com/user-attachments/assets/6bf4918c-0466-4bfb-bf48-94eb161474f4" />
+
+Name: `Enable RPC`
+
+<img width="197" alt="Screenshot 2025-01-30 142640" src="https://github.com/user-attachments/assets/9bbeac35-6780-431c-a694-f2c01e9d5352" />
+
+Right click `Enable RPC` -> `Edit`
+
+<img width="205" alt="Screenshot 2025-01-30 142717" src="https://github.com/user-attachments/assets/1c05f3ad-cfd8-472c-9a6c-463eada78cba" />
+
+`Computer Configuration` -> `Policies` -> `Administrative Templates` -> `System` -> `Remote Procedure Call`
+
+`Enable RPC Endpoint Mapper Client Authentication` -> `Edit policy settings`
+
+<img width="390" alt="Screenshot 2025-01-30 142955" src="https://github.com/user-attachments/assets/ba31dcd5-7f74-4260-97f0-c7382373e025" />
+
+`Enable` -> `Apply` -> `OK`
+
+<img width="343" alt="Screenshot 2025-01-30 143040" src="https://github.com/user-attachments/assets/f4f4dede-6ed8-494b-acf9-0cb0b5343a3d" />
+
+You can exit the group managment editor -> right click the `Start menu` -> `Windows PowerShell (Admin)`
+
+<img width="163" alt="Screenshot 2025-01-30 143222" src="https://github.com/user-attachments/assets/76288579-a334-4fef-a6ae-ab7b5229a536" />
+
+Inside the powershell run this command: `gpupdate /force`
+
+Now, whenever a new device joins our AD environment, the applicable Group Policies will be automatically applied. With this, the Domain Controller setup is complete.
+
+<img width="222" alt="Screenshot 2025-01-30 143453" src="https://github.com/user-attachments/assets/c7595d21-3aff-4d92-9987-f02e723e1305" />
+
+For the future you must start the DC vm before any other AD users vm's.
+
+# Windows 10 Enterprise VM 1 Setup
+
+From Oracle VirtualBox select the `Windows 10 Enterprise VM 1`
 
 
 

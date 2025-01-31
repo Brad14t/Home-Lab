@@ -1716,7 +1716,38 @@ From Oracle VirtualBox select the `Windows 10 Enterprise VM 1`
 
 <img width="337" alt="Screenshot 2025-01-31 091623" src="https://github.com/user-attachments/assets/9803f3e9-5ca5-4624-b644-b3462f8aef6e" />
 
-After the rebooting of the system for install select y your region and layout.
+After the rebooting of the system for install select your region and layout.
+
+<img width="508" alt="Screenshot 2025-01-31 150838" src="https://github.com/user-attachments/assets/9e0cabc1-eaf6-4335-ad86-3179c560ebbe" />
+
+<img width="505" alt="Screenshot 2025-01-31 150929" src="https://github.com/user-attachments/assets/cc21aa44-9e22-402b-8b61-2de297342b8f" />
+
+To configure a local account select `Domain join instead` -> Enter a `username` I used `John` Since that was the user name I chose for VM 1
+
+<img width="515" alt="Screenshot 2025-01-31 151538" src="https://github.com/user-attachments/assets/2e93f1fc-8d26-4000-8105-b7037b1678dd" />
+
+Create a `Password`
+
+<img width="517" alt="Screenshot 2025-01-31 151649" src="https://github.com/user-attachments/assets/e0ac8077-397f-41d2-a33f-4af3dbd6fdf1" />
+
+Enter security questions and save somewhere safe.
+
+De select all options
+
+<img width="515" alt="Screenshot 2025-01-31 152946" src="https://github.com/user-attachments/assets/e80ddec4-e29e-4dde-926f-3a6de5524e1f" />
+
+`Not now`
+
+<img width="505" alt="Screenshot 2025-01-31 153019" src="https://github.com/user-attachments/assets/534d8a37-0cf9-4b07-8328-770e4d901844" />
+
+Once finished select `yes` to allow internet access.
+
+<img width="501" alt="Screenshot 2025-01-31 153345" src="https://github.com/user-attachments/assets/0ce8269e-b38a-406d-a8b5-1190c91b9564" />
+
+
+
+
+
 
 
 

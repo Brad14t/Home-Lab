@@ -1694,23 +1694,29 @@ For the future you must start the DC vm before any other AD users vm's.
 
 From Oracle VirtualBox select the `Windows 10 Enterprise VM 1`
 
+<img width="605" alt="Screenshot 2025-01-31 091308" src="https://github.com/user-attachments/assets/381f72ee-f14e-4a62-b717-ee2aa0c969a3" />
 
+`Next`
 
+<img width="321" alt="Screenshot 2025-01-31 091418" src="https://github.com/user-attachments/assets/b348d687-b0b9-4a34-b26e-e90932889526" />
 
+`Install`
 
+<img width="307" alt="Screenshot 2025-01-31 091438" src="https://github.com/user-attachments/assets/ef1f90cc-9177-4978-84d6-00819cdbe46d" />
 
+`Next`
 
+<img width="337" alt="Screenshot 2025-01-31 091524" src="https://github.com/user-attachments/assets/89cc3c41-ef27-4dee-8cbb-8e02af188107" />
 
+`Custom: Install Windows only (advanced)`
 
+<img width="350" alt="Screenshot 2025-01-31 091547" src="https://github.com/user-attachments/assets/518e92da-d991-4b06-9a32-3cd2b0f9ec66" />
 
+`Next`
 
+<img width="337" alt="Screenshot 2025-01-31 091623" src="https://github.com/user-attachments/assets/9803f3e9-5ca5-4624-b644-b3462f8aef6e" />
 
-
-
-
-
-
-
+After the rebooting of the system for install select y your region and layout.
 
 
 

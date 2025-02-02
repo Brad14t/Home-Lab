@@ -1745,6 +1745,193 @@ Once finished select `yes` to allow internet access.
 <img width="501" alt="Screenshot 2025-01-31 153345" src="https://github.com/user-attachments/assets/0ce8269e-b38a-406d-a8b5-1190c91b9564" />
 
 
+Next is to install `Guess Additions` to enable fullscreen mode. 
+
+`Devices` -> `Remove disk for virtual drive` this will remove the Windows 10 image.
+
+![user-17](https://github.com/user-attachments/assets/4877b6b5-86f3-466b-af55-3fb635f9db63)
+
+`Devices` -> `Insert Guest Additions CD image`
+
+![user-18](https://github.com/user-attachments/assets/a2e403fb-d697-42d0-b1f4-da08eb5978ba)
+
+Select `VBoxWindowsAdditions` to start install
+
+<img width="241" alt="Screenshot 2025-02-01 132130" src="https://github.com/user-attachments/assets/9a63e7be-7e18-4bc0-a7fc-816b6670fd2f" />
+
+`Next`
+
+<img width="256" alt="Screenshot 2025-02-01 132228" src="https://github.com/user-attachments/assets/2fc0e6de-4c09-4bb1-b764-5ff7a83ea5d6" />
+
+`Next` 
+
+<img width="250" alt="Screenshot 2025-02-01 132728" src="https://github.com/user-attachments/assets/99dda151-0d10-4d8a-9639-9b6a4e2c0055" />
+
+`Install`
+
+<img width="250" alt="Screenshot 2025-02-01 132955" src="https://github.com/user-attachments/assets/d1ee1b47-211d-4ee0-aa42-2b5513246878" />
+
+`Reboot Now`
+
+<img width="253" alt="Screenshot 2025-02-01 134340" src="https://github.com/user-attachments/assets/b3fb961e-bf27-4d06-9a04-78360044d88c" />
+
+I had an error that looked like this.
+
+<img width="216" alt="Screenshot 2025-02-01 135749" src="https://github.com/user-attachments/assets/33f5acf4-bcc4-4948-8d95-4295d426e5ad" />
+
+To work around this when it asks, `Reboot Now` or `manually` select `Manually`
+
+![Screenshot 2025-02-01 134336](https://github.com/user-attachments/assets/b75385e6-24b5-4617-897d-b1380cde17f6)
+
+Then press `right ctrl` + `q` -> select `Power off Machine` -> Then just boot up and login normally from VirtualBox
+
+From the toolbar `Optical Devices` -> `Remove disk from virtual drive`
+
+![user-25](https://github.com/user-attachments/assets/ba5da873-9bbe-4874-9b88-3701692889df)
+
+Now you have the ability to enter fullscreen mode using `Right Ctrl+F`
+
+# Adding VM1 to Domain
+
+This section will allow us as an AD user to join the AD domain.
+
+Select the search bar in the bottom right of the desktop. -> search `This PC` -> Right click -> `Properties`
+
+<img width="476" alt="Screenshot 2025-02-01 142329" src="https://github.com/user-attachments/assets/6260beab-accc-4fb5-8346-f711500db84a" />
+
+`Advanced system settings`
+
+<img width="130" alt="Screenshot 2025-02-01 142719" src="https://github.com/user-attachments/assets/073c6369-0b15-422b-af2a-e6199771bbf5" />
+
+`Computer Name` -> `Change`
+
+<img width="208" alt="Screenshot 2025-02-01 142831" src="https://github.com/user-attachments/assets/58d47c5d-d10a-4ef3-b72f-c1ce6c88bc63" />
+
+Name: `WIn10_VM1` Feel free to name anything youd like.
+
+In the Member of select `Domain` -> enter in `ad.lab` -> `more`
+
+<img width="167" alt="Screenshot 2025-02-01 143032" src="https://github.com/user-attachments/assets/8ba76904-6902-4f9c-aa58-a3730bbebe1a" />
+
+Enter domain name: `ad.lab`
+
+<img width="196" alt="Screenshot 2025-02-01 143247" src="https://github.com/user-attachments/assets/14e078ac-d5a5-4951-8a25-b02e5c3d01fa" />
+
+'ok`
+
+<img width="161" alt="Screenshot 2025-02-01 143307" src="https://github.com/user-attachments/assets/e76607e2-ac94-4199-bbc4-07a6bcea8574" />
+
+<img width="178" alt="Screenshot 2025-02-01 143330" src="https://github.com/user-attachments/assets/01555174-fe53-4ee6-babb-e305882b5b28" />
+
+<img width="229" alt="Screenshot 2025-02-01 143620" src="https://github.com/user-attachments/assets/01711535-6a31-4735-8d79-e2c1f923a3f1" />
+
+<img width="124" alt="Screenshot 2025-02-01 143641" src="https://github.com/user-attachments/assets/01d26762-0ce5-4f14-b58e-d72bcf6f6774" />
+
+<img width="175" alt="Screenshot 2025-02-01 143658" src="https://github.com/user-attachments/assets/76ded3e9-8433-42d3-9b33-9490f2b528ad" />
+
+For me I took a snapshot, then select `File` -> `Close` -> `Power Off Machine` -> Then reboot from OracleBox
+
+Once rebooted select `Other user` login using the `john.doe` login
+
+<img width="371" alt="Screenshot 2025-02-01 144614" src="https://github.com/user-attachments/assets/c024c892-2230-4a05-a261-b7eba044a3eb" />
+
+Once inside open `PowerShell` and run the command: `whoami` and `ipconfig` to confirm
+
+<img width="267" alt="Screenshot 2025-02-01 145221" src="https://github.com/user-attachments/assets/06605276-4b11-4f44-8594-0b5f16b23c1d" />
+
+# Windows 10 Enterprise VM2 Setup
+
+Select the vm in OracleBox -> select `Start`
+
+Same as VM 1
+
+<img width="592" alt="Screenshot 2025-02-01 145442" src="https://github.com/user-attachments/assets/13993a85-7b8f-4346-9347-298690f70bf8" />
+
+<img width="311" alt="Screenshot 2025-02-01 145718" src="https://github.com/user-attachments/assets/7048de5c-cf98-4c0b-a7ef-e6139ec49086" />
+
+<img width="310" alt="Screenshot 2025-02-01 145747" src="https://github.com/user-attachments/assets/35136699-dd92-4aea-a28a-805612010718" />
+
+<img width="326" alt="Screenshot 2025-02-01 145907" src="https://github.com/user-attachments/assets/32436d96-42ba-49e5-8eb1-18ed15ba0769" />
+
+<img width="316" alt="Screenshot 2025-02-01 145924" src="https://github.com/user-attachments/assets/54225734-391f-4cbc-8b2d-7718f53a4095" />
+
+<img width="322" alt="Screenshot 2025-02-01 150000" src="https://github.com/user-attachments/assets/af2017f2-049e-49f7-9aa2-3395fd1e1fe6" />
+
+<img width="509" alt="Screenshot 2025-02-01 153622" src="https://github.com/user-attachments/assets/f2fe5dc7-4502-4eaa-a56f-bcfbfd09e2c8" />
+
+Use same name as Vm 2: `Jane`
+
+<img width="506" alt="Screenshot 2025-02-01 154731" src="https://github.com/user-attachments/assets/e590a7fa-f3d0-48c3-8b0b-87479ff5f8b8" />
+
+<img width="422" alt="Screenshot 2025-02-01 154759" src="https://github.com/user-attachments/assets/f3674ac9-5af8-4d9c-8571-2aaf314d9462" />
+
+<img width="489" alt="Screenshot 2025-02-01 154846" src="https://github.com/user-attachments/assets/c3b6577d-8e83-4cc8-8783-e7d7e6128ed3" />
+
+<img width="509" alt="Screenshot 2025-02-01 154942" src="https://github.com/user-attachments/assets/c660cdd4-1e3a-48c5-aa23-f14b31ca3dda" />
+
+<img width="476" alt="Screenshot 2025-02-01 155153" src="https://github.com/user-attachments/assets/86b69f68-bcc8-4386-82f3-6fb5589f69cf" />
+
+<img width="175" alt="Screenshot 2025-02-01 155503" src="https://github.com/user-attachments/assets/cc8056cc-834b-48d8-8d5a-22bad3a1ec28" />
+
+Guest Additions Installation (Same as before)
+
+![user-17](https://github.com/user-attachments/assets/8560579c-a932-47b9-9a3e-f0c068b12fc7)
+
+![user-18](https://github.com/user-attachments/assets/f8012930-e6b5-4671-a2cc-aa2509f4e20e)
+
+<img width="400" alt="Screenshot 2025-02-01 155904" src="https://github.com/user-attachments/assets/0003d8ab-1f41-4fd3-9e0c-ed9969c4732e" />
+
+<img width="234" alt="Screenshot 2025-02-01 155942" src="https://github.com/user-attachments/assets/2c8fba73-a92b-475e-9ab2-4804a043fc33" />
+
+<img width="247" alt="Screenshot 2025-02-01 160137" src="https://github.com/user-attachments/assets/b23ab435-0d2e-4d2f-b30b-748c28938e15" />
+
+<img width="244" alt="Screenshot 2025-02-01 160152" src="https://github.com/user-attachments/assets/a0d5b908-d1c5-4a05-902e-83ac520439ef" />
+
+<img width="253" alt="Screenshot 2025-02-01 160206" src="https://github.com/user-attachments/assets/361a32e1-4e54-49b4-825b-339de1af674f" />
+
+<img width="248" alt="Screenshot 2025-02-01 160327" src="https://github.com/user-attachments/assets/cb3659a0-43e5-4171-8740-f4a22244f9fd" />
+
+<img width="262" alt="Screenshot 2025-02-01 160501" src="https://github.com/user-attachments/assets/8760f1f7-fd2f-423d-9b39-d9fb58513379" />
+
+Reboot from VirtualBox 
+
+Ignore my dumb dumb saves I couldnt remember.
+
+<img width="579" alt="Screenshot 2025-02-01 160644" src="https://github.com/user-attachments/assets/324454e5-de46-4e07-a031-3ccfe046682a" />
+
+<img width="213" alt="Screenshot 2025-02-01 160918" src="https://github.com/user-attachments/assets/6079437f-3bd8-4ba7-a0e8-1e6f8aaaa9ef" />
+
+![user-25](https://github.com/user-attachments/assets/71b2ad27-bf83-42d8-846d-7fa41c3d189a)
+
+# Adding VM2 to Domain
+
+Same as VM 1
+
+<img width="384" alt="Screenshot 2025-02-01 161208" src="https://github.com/user-attachments/assets/32b8cc6b-4184-4166-b0ab-76a7e7c55de8" />
+
+<img width="399" alt="Screenshot 2025-02-01 161407" src="https://github.com/user-attachments/assets/d5f77dd1-b0df-44c2-b463-55b78715bb03" />
+
+<img width="208" alt="Screenshot 2025-02-01 161558" src="https://github.com/user-attachments/assets/915e37d7-b835-4678-a927-653afb7c36af" />
+
+<img width="165" alt="Screenshot 2025-02-01 161658" src="https://github.com/user-attachments/assets/7e952308-87d1-4f79-9df8-b1723038d98f" />
+
+<img width="197" alt="Screenshot 2025-02-01 161808" src="https://github.com/user-attachments/assets/7cd4b2bf-7239-4b09-b1ba-706b56004f60" />
+
+<img width="189" alt="Screenshot 2025-02-01 161828" src="https://github.com/user-attachments/assets/5d114fd1-e6c4-4e64-8fe9-c7cc3fc27a56" />
+
+<img width="133" alt="Screenshot 2025-02-01 161941" src="https://github.com/user-attachments/assets/683476bb-6389-46ce-be83-13647a6f8693" />
+
+<img width="178" alt="Screenshot 2025-02-01 162008" src="https://github.com/user-attachments/assets/7118682d-6f56-4472-adf0-68d06baa43de" />
+
+<img width="238" alt="Screenshot 2025-02-01 162050" src="https://github.com/user-attachments/assets/24dd2c16-3c0b-41f4-b0c0-0a3dd4773f98" />
+
+<img width="502" alt="Screenshot 2025-02-01 162345" src="https://github.com/user-attachments/assets/a0200ad5-4807-475f-9a43-d756d797eb3f" />
+
+
+
+
+
+
 
 
 

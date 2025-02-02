@@ -1927,20 +1927,42 @@ Same as VM 1
 
 <img width="502" alt="Screenshot 2025-02-01 162345" src="https://github.com/user-attachments/assets/a0200ad5-4807-475f-9a43-d756d797eb3f" />
 
+# DNS & DHCP Verification
 
+Inside `DHCP Manager` inside of the `DC` vm -> `IPv4` -> `Address leases` -> Here we can see our AD lab vms
 
+<img width="286" alt="Screenshot 2025-02-02 142546" src="https://github.com/user-attachments/assets/8fb6ca4a-ca14-447e-b27a-7f8efe861b30" />
 
+Inside `DNS Manager` you can see our DNS entries
 
+<img width="376" alt="Screenshot 2025-02-02 142901" src="https://github.com/user-attachments/assets/2b39af15-f6d7-46fb-94dd-53393c84a93a" />
 
+This will conclude the building of the Domain Controller and Active Directory Lab. Next will be the setup of the Malware Analysist Lab.
 
+# Malware Analysis Lab Setup
 
+In this section I will set up 2 Vms, 1 for Windows Malware analysis, 1 for Linux Malware Analysis.
 
+Im needing to add a new interface to pfSense, but they are full at 4. The way to get up to 8 is through the command line interface or CLI.
 
+Inside of the `host computer` -> select `C` drive -> `Program Files` -> `Oracle` -> Select `VBoxManage.exe` -> Copy the path at the top `C:\Program Files\Oracle\VirtualBox`
 
+The VirtualBox CLI binary is `VBoxManage.exe`
 
+<img width="588" alt="Screenshot 2025-02-02 150111" src="https://github.com/user-attachments/assets/6becb511-d71e-4760-82e0-6a7c5bc5b54b" />
 
+Next in the search bar type  and select `Edit environment variables for your account` -> select `Path`
 
+<img width="438" alt="Screenshot 2025-02-02 150706" src="https://github.com/user-attachments/assets/7914d3b6-ec6f-40b3-b037-6502d0e4411d" />
 
+Select `New` and paste `C:\Program Files\Oracle\VirtualBox` -> `OK`
 
+<img width="367" alt="Screenshot 2025-02-02 150956" src="https://github.com/user-attachments/assets/dda103cd-5576-488c-a1c9-eabbfff3da7d" />
 
+<img width="370" alt="Screenshot 2025-02-02 151041" src="https://github.com/user-attachments/assets/fb055439-9e8f-47e3-93fe-379a708f1478" />
 
+Next to check if that worked, open `Powershell` and get into the Virtual Box file by entering this command: `cd /` to get to your "home" -> `cd ./ProgramFiles/Oracle/VirtualBox` -> `VBoxManage list vms`
+
+<img width="550" alt="Screenshot 2025-02-02 152031" src="https://github.com/user-attachments/assets/404d4f00-fce4-4e4d-b6c5-31c3b3da6b95" />
+
+I just have some clones for testing, if your following you wouldnt have those.

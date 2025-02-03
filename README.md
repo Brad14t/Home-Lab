@@ -1966,3 +1966,138 @@ Next to check if that worked, open `Powershell` and get into the Virtual Box fil
 <img width="550" alt="Screenshot 2025-02-02 152031" src="https://github.com/user-attachments/assets/404d4f00-fce4-4e4d-b6c5-31c3b3da6b95" />
 
 I just have some clones for testing, if your following you wouldnt have those.
+
+# Creating an Interface
+
+First note down the name of the `pfsense VM` mine is `pfSense`
+
+Also make sure the vm is offline.
+
+<img width="595" alt="Screenshot 2025-02-03 100040" src="https://github.com/user-attachments/assets/2480b305-34f2-4a9d-9f34-5bbfae20788b" />
+
+Inside `PowerShell` run these commands.
+
+To create an Internet Network: `VBoxManage modifyvm "pfSense" --nic5 intnet`
+
+Paravirtualized Adapter: `VBoxManage modifyvm "pfSense" --nictype5 virtio`
+
+Give it a name of LAN 3: `VBoxManage modifyvm "pfSense" --intnet5 "LAN 3"`
+
+<img width="499" alt="Screenshot 2025-02-03 101710" src="https://github.com/user-attachments/assets/5e5d2d09-ff63-49ca-96d1-ef7b037faab2" />
+
+<img width="535" alt="Screenshot 2025-02-03 101723" src="https://github.com/user-attachments/assets/07f7e464-cd4d-446a-8f98-0bbb9c47ce2b" />
+
+Now to see if the new Interface has been added look in VirtualBox
+
+<img width="593" alt="Screenshot 2025-02-03 101810" src="https://github.com/user-attachments/assets/0cda4e4b-1cca-4faa-9873-dc758f8d020b" />
+
+Any further editting of this interface has to be done through the CLI.
+
+# Enabling the New Interface
+
+Start up the `pfSense vm`
+
+On boot it wont show the new interface to fix this enter in `1` to the menu.
+
+<img width="355" alt="Screenshot 2025-02-03 102230" src="https://github.com/user-attachments/assets/13770602-6260-46c2-b7ef-79bae3a15d7a" />
+
+Should VLANs be set up now? `n`
+
+<img width="360" alt="Screenshot 2025-02-03 102632" src="https://github.com/user-attachments/assets/dfff3225-1071-4d8d-9053-cd49adb3701e" />
+
+Enter the WAN interface name: `vtnet0`
+Enter the LAN interface name: `vtnet1`
+Enter the Optional 1 interface name: `vtnet2`
+Enter the Optional 2 interface name: `vtnet3`
+Enter the Optional 3 interface name: `vtnet4`
+Do you want to proceed?: `y`
+
+<img width="322" alt="Screenshot 2025-02-03 102844" src="https://github.com/user-attachments/assets/82e8c8b8-4230-4066-a0ab-daa2c63c4df2" />
+
+We can see the interface now, but it needs an IP assigned.
+
+<img width="361" alt="Screenshot 2025-02-03 102927" src="https://github.com/user-attachments/assets/b4ece991-c936-499f-af41-1a8e2fb290f5" />
+
+Enter `2` to select `Set interface(s) IP address`
+
+<img width="358" alt="Screenshot 2025-02-03 103347" src="https://github.com/user-attachments/assets/0f2b557a-631f-4ca8-841e-a0ef282ad0bc" />
+
+Enter `5` to select the `OPT3 interface`
+
+<img width="360" alt="Screenshot 2025-02-03 103451" src="https://github.com/user-attachments/assets/89a65718-1bdc-4c70-9189-2782d02ae201" />
+
+* Configure IPv4 address OPT3 interface via DHCP?: `n`
+* Enter the new OPT3 IPv4 address: `10.99.99.1`
+* Enter the new OPT3 IPv4 subnet bit count: `24`
+
+<img width="364" alt="Screenshot 2025-02-03 103547" src="https://github.com/user-attachments/assets/98d4eb6c-d6a9-43f2-9655-4077ecef7db7" />
+
+`Enter` no need for upstream gateway
+
+<img width="362" alt="Screenshot 2025-02-03 103700" src="https://github.com/user-attachments/assets/9268a73d-ca51-4e4f-95a5-33be8af1b6b1" />
+
+* Configure IPv6 address OPT3 interface via DHCP6: `n`
+* For the new OPT3 IPv6 address question press `Enter`
+* Do you want to enable the DHCP server on OPT3?: `y`
+* Enter the start address of the IPv4 client address range: `10.99.99.11`
+* Enter the end address of the IPv4 client address range: `10.99.99.243`
+* Do you want to revert to HTTP as the webConfigurator protocol?: `n`
+
+<img width="361" alt="Screenshot 2025-02-03 103832" src="https://github.com/user-attachments/assets/4ba3c39a-31e2-46bc-899d-f41acbba944f" />
+
+Should look like this
+
+<img width="362" alt="Screenshot 2025-02-03 103928" src="https://github.com/user-attachments/assets/3e663519-e699-450a-b200-186ac0f5bb64" />
+
+# Rename New Interface
+
+Open `Kali Linux VM`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

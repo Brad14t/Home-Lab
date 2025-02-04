@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/2affe49b-7c89-42b8-a763-1987db3b358f)# Home-Lab
+# Home-Lab
 
 
 # Overview 
@@ -2140,5 +2140,87 @@ Select `System` -> `Motherboard` -> `Boot Order` -> make sure its selected `Hard
 In the `Network` tab, make sure to have NAT selected. This will be changed once Flare is setup. 
 
 <img width="569" alt="Screenshot 2025-02-04 140453" src="https://github.com/user-attachments/assets/f67f1419-0295-4afc-b9f4-91db1bf77031" />
+
+# Installing Windows
+
+Start up the new Flare VM
+
+This will be the same setup as the last 2 times, follow the below steps.
+
+<img width="471" alt="Screenshot 2025-02-04 140711" src="https://github.com/user-attachments/assets/502f3dc4-395a-429b-beb0-b89471c238ab" />
+
+<img width="321" alt="Screenshot 2025-02-04 140827" src="https://github.com/user-attachments/assets/a01886a0-a659-448e-8589-dbb70b0607f6" />
+
+<img width="334" alt="Screenshot 2025-02-04 140842" src="https://github.com/user-attachments/assets/6c03973c-2841-454b-b8a5-b642b8707d3e" />
+
+<img width="328" alt="Screenshot 2025-02-04 140905" src="https://github.com/user-attachments/assets/ebeba6e6-8661-4687-8c80-336376cde5bd" />
+
+<img width="325" alt="Screenshot 2025-02-04 140921" src="https://github.com/user-attachments/assets/59149c17-d375-4909-82df-343404567411" />
+
+<img width="327" alt="Screenshot 2025-02-04 140932" src="https://github.com/user-attachments/assets/cc47f6d1-34df-48cc-93a6-7984cdf7a613" />
+
+<img width="441" alt="Screenshot 2025-02-04 143650" src="https://github.com/user-attachments/assets/75ca352d-0ee4-4441-ad02-14f7609c8984" />
+
+<img width="512" alt="Screenshot 2025-02-04 143706" src="https://github.com/user-attachments/assets/a0cc069a-d436-4545-b73b-7b9a0cba0081" />
+
+<img width="507" alt="Screenshot 2025-02-04 143745" src="https://github.com/user-attachments/assets/d67768db-731d-41cf-a32c-3791a196a88f" />
+
+
+For the naming make sure to provide a name that does not use special characters and spaces. (Required by FlareVM)
+
+<img width="510" alt="Screenshot 2025-02-04 144151" src="https://github.com/user-attachments/assets/f6050241-688a-4a50-a271-d480dbb352f6" />
+
+<img width="513" alt="Screenshot 2025-02-04 144207" src="https://github.com/user-attachments/assets/0a0199a8-e5cc-4f07-bab0-c78954f3a0ea" />
+
+<img width="505" alt="Screenshot 2025-02-04 144452" src="https://github.com/user-attachments/assets/316d6912-2ff2-44ed-8214-6fb0f0925ff2" />
+
+<img width="519" alt="Screenshot 2025-02-04 144608" src="https://github.com/user-attachments/assets/224ff67a-74fa-4fad-8421-7ed6b77780ca" />
+
+<img width="511" alt="Screenshot 2025-02-04 144654" src="https://github.com/user-attachments/assets/986eef36-6fda-4b1c-b8b5-b9f7edbd0c08" />
+
+<img width="511" alt="Screenshot 2025-02-04 144753" src="https://github.com/user-attachments/assets/02bd059a-f5ce-426c-8e00-3a247b7978b5" />
+
+Guest Additions Installation
+
+`Optical Drives` -> `Devices` -> `Remove`
+
+![image](https://github.com/user-attachments/assets/d17ea259-8ffd-4887-a28e-817402e9dd63)
+
+![image](https://github.com/user-attachments/assets/0b4fa68e-e8eb-432f-8317-d9c4e03eecdf)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

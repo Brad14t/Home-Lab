@@ -1,4 +1,4 @@
-# Home-Lab
+![image](https://github.com/user-attachments/assets/2affe49b-7c89-42b8-a763-1987db3b358f)# Home-Lab
 
 
 # Overview 
@@ -2049,55 +2049,96 @@ Should look like this
 
 <img width="362" alt="Screenshot 2025-02-03 103928" src="https://github.com/user-attachments/assets/3e663519-e699-450a-b200-186ac0f5bb64" />
 
-# Rename New Interface
+Rename New Interface
 
-Open `Kali Linux VM`
+Open `Kali Linux VM` 
 
+From the tool bar at the top select `Interfaces -> OPT3`
 
+<img width="337" alt="Screenshot 2025-02-04 133539" src="https://github.com/user-attachments/assets/e3ddfc28-a6af-4861-8c5d-89e89f841c95" />
 
+In the description field enter `ISOLATED` -> `save`
 
+<img width="437" alt="Screenshot 2025-02-04 133630" src="https://github.com/user-attachments/assets/f1ee280b-2e0e-4893-8f4b-6a8a3bf2cd9e" />
 
+<img width="590" alt="Screenshot 2025-02-04 133650" src="https://github.com/user-attachments/assets/a8bc1049-ef02-40db-8446-ac2a4f2dd81d" />
 
+# Interface Firewall Configuration
 
+The reason for this firewall configuration is since their will be malicous data I dont want it spreading to the rest of the network.
 
+From the top tool bar select `Firewall` -> `Rules`
 
+<img width="307" alt="Screenshot 2025-02-04 133835" src="https://github.com/user-attachments/assets/8eca96b7-3708-4a9b-89de-aa97c3b0c7b3" />
 
+Select `ISOLATED` -> `ADD`
 
+<img width="611" alt="Screenshot 2025-02-04 133916" src="https://github.com/user-attachments/assets/2ebd3f7d-1c9d-4eef-b69b-f085187749a4" />
 
+* Action: `Block`
+* Address `Family: IPv4+IPv6`
+* Protocol: `Any`
+* Source: `ISOLATED subnets`
+* Description: `Block access to everything`
+* Scroll to the bottom and click on `Save`
 
+<img width="607" alt="Screenshot 2025-02-04 134134" src="https://github.com/user-attachments/assets/3d66eb8e-91b8-492f-909a-74668f0b90f9" />
 
+<img width="594" alt="Screenshot 2025-02-04 134209" src="https://github.com/user-attachments/assets/f44ad7a9-06fd-4a01-aeee-a54fa84fb5e6" />
 
+Next is to reboot to have these changes take effect.
 
+In the top tool bar select `Diagnostics` -> `Reboot`
 
+<img width="594" alt="Screenshot 2025-02-04 134429" src="https://github.com/user-attachments/assets/83778837-53b8-423f-8594-e992d51010ba" />
 
+<img width="600" alt="Screenshot 2025-02-04 134457" src="https://github.com/user-attachments/assets/8a75bd52-1c02-4003-bd85-45ed793ffac5" />
 
+# Flare VM Setup
 
+To complete the flare VM setup we need a windows machine. And since I still have the windows 
 
+If you need to download Windows again find it here: https://www.microsoft.com/en-us/evalcenter/download-windows-10-enterprise
 
+<img width="766" alt="Screenshot 2025-02-04 134851" src="https://github.com/user-attachments/assets/51dc3cd4-4a99-4761-8d7f-65f04e341916" />
 
+From VirtualBox select `Tools` -> `New`
 
+<img width="447" alt="Screenshot 2025-02-04 134952" src="https://github.com/user-attachments/assets/5d2792bf-9547-4948-b83e-dec6c4eb7503" />
 
+* Name: `Flare VM`
+* File: `vm folder`
+* ISO Image: `Windows ISO`
+* Select `Skip Unattened Installtion
 
+<img width="760" alt="Screenshot 2025-02-04 135148" src="https://github.com/user-attachments/assets/2879abde-cebd-48ff-992d-dc21ff3b03f8" />
 
+In the `Hardware` tab increase base memory to `4096MB`
 
+<img width="634" alt="Screenshot 2025-02-04 135435" src="https://github.com/user-attachments/assets/bb11b62a-b363-4c7e-b02f-e783bb6b9bae" />
 
+In ther Hard Disk tab increase disk space to `100GB`
 
+<img width="750" alt="Screenshot 2025-02-04 135542" src="https://github.com/user-attachments/assets/175da734-f533-4bf2-a96a-9ba32ebbd945" />
 
+Moving the FLare VM into a new group
 
+Select `Flare VM` -> `Machine` -> `Move to Group` -> `New` -> Select the new group -> `Group` -> `Rename Group` to `Malware Analyst`
 
+<img width="431" alt="Screenshot 2025-02-04 135938" src="https://github.com/user-attachments/assets/3a8ec1c1-68f3-44ab-89a4-7741d2b6d71e" />
 
+# Configuring Flare VM
 
+Select the VM -> `settings`
 
+<img width="438" alt="Screenshot 2025-02-04 140124" src="https://github.com/user-attachments/assets/0bc04eaa-0b0d-4f7e-9882-9d11ff212a1b" />
 
+Select `System` -> `Motherboard` -> `Boot Order` -> make sure its selected `Hard Disk` -> selcted `Optical` -> unchecked `Flobby` -> unchecked `Network`
 
+<img width="577" alt="Screenshot 2025-02-04 140404" src="https://github.com/user-attachments/assets/3040cf19-3ba3-4adc-a21a-43ffd5bb8a56" />
 
+In the `Network` tab, make sure to have NAT selected. This will be changed once Flare is setup. 
 
-
-
-
-
-
-
-
+<img width="569" alt="Screenshot 2025-02-04 140453" src="https://github.com/user-attachments/assets/f67f1419-0295-4afc-b9f4-91db1bf77031" />
 
 

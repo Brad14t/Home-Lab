@@ -2188,7 +2188,9 @@ Guest Additions Installation
 
 ![image](https://github.com/user-attachments/assets/0b4fa68e-e8eb-432f-8317-d9c4e03eecdf)
 
+After reboot
 
+`Optical Drives` -> `Devices` -> `Remove`
 
 
 

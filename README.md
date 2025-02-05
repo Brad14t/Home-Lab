@@ -2192,32 +2192,153 @@ After reboot
 
 `Optical Drives` -> `Devices` -> `Remove`
 
+# Flare VM Disabling `Windows Updates` and `Windows Defender`
+
+Start the `Flare VM`
+
+In the search bar type and select `Settings`
+
+<img width="394" alt="Screenshot 2025-02-05 133011" src="https://github.com/user-attachments/assets/03eff44c-87d9-4d13-970a-9f1d7d08b2c6" />
+
+Select `Update & Security`
+
+<img width="394" alt="Screenshot 2025-02-05 133049" src="https://github.com/user-attachments/assets/1f193546-22bf-4fc2-afc2-17e43d8e7744" />
+
+`Windows Update`
+
+<img width="339" alt="Screenshot 2025-02-05 133144" src="https://github.com/user-attachments/assets/44dbeed2-118f-450d-a03f-691f4f5d1538" />
+
+`Pause updates for 7 days`
+
+<img width="392" alt="Screenshot 2025-02-05 133225" src="https://github.com/user-attachments/assets/f327b05a-5df1-4e58-b01a-d579219b36e7" />
+
+Next is to disable `Windows Defender`
+
+Right-click on the Shield icon on the taskbar and select `View Security Dashboard`
+
+<img width="144" alt="Screenshot 2025-02-05 133542" src="https://github.com/user-attachments/assets/7522fb98-02f1-4aff-bc7e-c5be01fafc45" />
+
+Select `Virus & threat protection`
+
+<img width="247" alt="Screenshot 2025-02-05 133617" src="https://github.com/user-attachments/assets/465545d2-3ad0-4988-a72d-be18431ce295" />
+
+Scroll down and select `Manage settings`
+
+<img width="252" alt="Screenshot 2025-02-05 133703" src="https://github.com/user-attachments/assets/4ff0b7c2-584f-4628-8007-4a003958cc4f" />
+
+Disable: `Real Time Protection`, `Cloud Delivered Protection`, `Automatic Sample Submission`, `Tamper Protection`
+
+<img width="275" alt="Screenshot 2025-02-05 133903" src="https://github.com/user-attachments/assets/8c914e82-13e5-400f-a7c9-8aee5ba7c2bb" />
+
+<img width="287" alt="Screenshot 2025-02-05 133916" src="https://github.com/user-attachments/assets/74668a35-f8a6-4e62-a763-a3d208c042d5" />
+
+Next right click on the Start menu and select `Windows PowerShell (Admin)`
+
+<img width="258" alt="Screenshot 2025-02-05 134125" src="https://github.com/user-attachments/assets/14ccfda2-034d-451d-a8f9-03c8302918d6" />
+
+Then run this command `(DO NOT RUN THIS ON THE HOST SYSTEM IT PERMINATLY DELETES DEFENDER)`: 
+
+I came across an error here when running the command. I noticed I wasnt connected to the internet, after looking through some setting a simple restart fixed it.
+
+`Invoke-WebRequest "https://raw.githubusercontent.com/jeremybeaume/tools/master/disable-defender.ps1" -OutFile $HOME\Downloads\disable-defender.ps1`
+
+If it looks like this it was successfull
+
+<img width="437" alt="Screenshot 2025-02-05 135429" src="https://github.com/user-attachments/assets/649a19af-7c82-4c44-aac5-af7417e1abed" />
+
+In the search bar type and select `Run`
+
+<img width="299" alt="Screenshot 2025-02-05 135656" src="https://github.com/user-attachments/assets/8cd10ba2-d460-4ba1-b526-e062199c9868" />
+
+In the run menu type `msconfig` -> `OK`
+
+<img width="203" alt="Screenshot 2025-02-05 135801" src="https://github.com/user-attachments/assets/8834bf56-f55c-42af-b97d-64b3b9102992" />
+
+Select the `Boot` tab -> `Boot Options Sections` -> Enable `Safe Boot` -> `OK`
+
+<img width="295" alt="Screenshot 2025-02-05 135945" src="https://github.com/user-attachments/assets/82a63d16-d45d-473d-a2e3-2e88dc15a308" />
+
+`Restart`
+
+<img width="186" alt="Screenshot 2025-02-05 140022" src="https://github.com/user-attachments/assets/c5240ce5-d30e-484c-9a89-3bf0024498b7" />
+
+Once rebooted it will look different, thats ok, when in safe mode essencially disables all features not required for the OS to run.
+
+Next right click on the Start menu and select `Windows PowerShell (Admin)`
+
+<img width="193" alt="Screenshot 2025-02-05 140614" src="https://github.com/user-attachments/assets/fe6b10f3-37dd-4004-9501-7bdd7a638750" />
+
+Runs these commands:
+
+* `cd .\Downloads\` - This is just changing directory
+* `Unblock-File .\disable-defender.ps1` - Unblocks the downloaded script 
+* `Set-ExecutionPolicy Unrestricted -Force` - Disable the PowerShell policy preventing script execution
+* `.\disable-defender.ps1` -Starts the script
+* Press `Enter` once complete
 
 
+<img width="252" alt="Screenshot 2025-02-05 140852" src="https://github.com/user-attachments/assets/f0423854-5f5f-4678-98fd-a097a3f010b7" />
+
+<img width="256" alt="Screenshot 2025-02-05 140915" src="https://github.com/user-attachments/assets/6bd56029-9f6e-4d69-8635-6e6d6d77adfa" />
+
+Open the `Run` window again. -> type `msconfig` -> `OK`
+
+<img width="209" alt="Screenshot 2025-02-05 141122" src="https://github.com/user-attachments/assets/6dd04ebd-f77c-48fd-8419-11b428a317b2" />
+
+Select the `Boot` tab -> disable `Safe boot`-> `OK` -> `Restart` the VM to boot normally into Windows.
+
+<img width="286" alt="Screenshot 2025-02-05 141312" src="https://github.com/user-attachments/assets/38d5779a-1a5a-414b-8912-e392e18b7441" />
+
+<img width="185" alt="Screenshot 2025-02-05 141323" src="https://github.com/user-attachments/assets/b2f3dc20-dea2-44b7-992a-ee0b5c86e9a2" />
+
+Wait for some time for Defender to load completely and then you will see that “Virus & threat protection” will show as disabled. This means that the script worked successfully.
+
+Wait a minute for Defender to load, a pop up will say `Virus & threat protection` select it, if `Virus & threat protection` disabled that means the script was successful.
+
+<img width="449" alt="Screenshot 2025-02-05 141948" src="https://github.com/user-attachments/assets/4ca9d089-2225-4b36-973e-d6c6343d6f1b" />
+
+Renaming this VM 
+
+Search `This PC` -> Select `Properties`
+
+<img width="423" alt="Screenshot 2025-02-05 142050" src="https://github.com/user-attachments/assets/a194071d-6b8e-488c-958a-fe555423c1eb" />
+
+Select `Rename this PC`
+
+<img width="480" alt="Screenshot 2025-02-05 142126" src="https://github.com/user-attachments/assets/7b112bb4-a405-41cc-af75-f4991ebdb6d2" />
+
+Name it: Flare-VM -> `Next` -> `Restart Now`
+
+<img width="346" alt="Screenshot 2025-02-05 142213" src="https://github.com/user-attachments/assets/7eea1400-66a5-465c-bc87-43fec2720ec3" />
+
+<img width="346" alt="Screenshot 2025-02-05 142228" src="https://github.com/user-attachments/assets/de52b3e9-9ecc-47cf-9cc6-575a76580de2" />
+
+Next I will shut down the vm and make a snapshot, then name it `No Defender` 
+
+<img width="248" alt="Screenshot 2025-02-05 142554" src="https://github.com/user-attachments/assets/2c39d49f-023f-4a98-a5c7-e5359c404376" />
+
+<img width="523" alt="Screenshot 2025-02-05 142635" src="https://github.com/user-attachments/assets/cd8ddc47-e2d6-43e9-851b-7ffb5834c15d" />
+
+# Flare VM Installation
+
+Start back up the Flare VM 
+
+Next right click on the Start menu and select `Windows PowerShell (Admin)`
+
+Run these commands:
+
+* `Invoke-WebRequest "https://raw.githubusercontent.com/mandiant/flare-vm/main/install.ps1" -OutFile $HOME/Downloads/install.ps1` - Downloading the FlareVM script
+* `cd $HOME/Downloads` - changes directory to downloads
+* `Unblock-File .\install.ps1` - Unlocks the download script
+* `Set-ExecutionPolicy Unrestricted -Force` - Disable Powershell script policy
+* `.\install.ps1` - Runs the script
 
 
+In the `Package Installation Customization` section
 
+On the left side look for and select `debloat.vm` -> Then select the arrow to the right -> `OK`
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<img width="661" alt="Screenshot 2025-02-05 144212" src="https://github.com/user-attachments/assets/e8d440a2-f6b3-4345-bc16-ed7f9b48073a" />
 
 
 

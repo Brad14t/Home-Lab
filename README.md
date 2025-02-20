@@ -2340,6 +2340,226 @@ On the left side look for and select `debloat.vm` -> Then select the arrow to th
 
 <img width="661" alt="Screenshot 2025-02-05 144212" src="https://github.com/user-attachments/assets/e8d440a2-f6b3-4345-bc16-ed7f9b48073a" />
 
+Post Installation
+
+Next we will move this VM to be isolated, once that is done it wont be connected to the internet.
+
+In the search bar type `Add` and select `Add and Remove Applications`
+
+<img width="445" alt="Screenshot 2025-02-08 140829" src="https://github.com/user-attachments/assets/7bea2669-ec93-40d2-b348-55cf1ac2b479" />
+
+Select `Optional Features`
+
+<img width="267" alt="Screenshot 2025-02-08 140951" src="https://github.com/user-attachments/assets/1bc3b172-9021-4676-aa72-2e473a003d12" />
+
+Select `Add Feature`
+
+<img width="255" alt="Screenshot 2025-02-08 141044" src="https://github.com/user-attachments/assets/43badfa3-cf5d-4f71-85a7-9297709a8842" />
+
+Type `ssh` -> Enable `Open SSH` -> `Install`
+
+<img width="349" alt="Screenshot 2025-02-08 141216" src="https://github.com/user-attachments/assets/53ad0995-28e1-4cb7-a884-e85edde13b28" />
+
+Next check to see if that was succesfull, type in the search bar `ssh` and you should see `OpenSSH Client` and `OpenSSH Server`
+
+<img width="256" alt="Screenshot 2025-02-08 141528" src="https://github.com/user-attachments/assets/9be2f017-25d8-4c0d-a9a0-114ad15940fe" />
+
+# Isolating FlareVM
+
+Shut down `FlareVM` -> `Settings`
+
+<img width="271" alt="Screenshot 2025-02-08 141648" src="https://github.com/user-attachments/assets/f7b24a06-1bda-4185-be8e-1fa6ccbdc7f5" />
+
+<img width="582" alt="Screenshot 2025-02-08 141744" src="https://github.com/user-attachments/assets/2f743e27-0829-401b-a3ec-11af8ad38008" />
+
+`Network` Tab
+
+* Attached to: `Internal Network`
+* Name: `LAN 3`-> `OK`
+
+<img width="575" alt="Screenshot 2025-02-08 142033" src="https://github.com/user-attachments/assets/8dc208f1-3215-484f-8e95-925d8e1547c2" />
+
+Make a snapshot
+
+<img width="593" alt="Screenshot 2025-02-08 142335" src="https://github.com/user-attachments/assets/d7f35011-c36e-4612-ac79-2c959e964272" />
+
+# REMnux VM Setup
+
+Head to this link and download the image: https://docs.remnux.org/install-distro/get-virtual-appliance
+
+Select `Box`
+
+<img width="454" alt="Screenshot 2025-02-08 142921" src="https://github.com/user-attachments/assets/6fbdad06-b9b1-49a8-ab25-864c16540468" />
+
+<img width="807" alt="Screenshot 2025-02-08 143029" src="https://github.com/user-attachments/assets/d13e745b-d7bc-4f03-8e46-982741f2b486" />
+
+Once downloaded you should have a `.ova` file
+
+<img width="456" alt="Screenshot 2025-02-08 143438" src="https://github.com/user-attachments/assets/1d3a76a5-20ff-4e8f-8790-cfc1389bedc2" />
+
+Import the VM 
+
+In VirtualBox select `Import`
+
+<img width="517" alt="Screenshot 2025-02-08 143126" src="https://github.com/user-attachments/assets/7aa55562-944b-4cd1-9795-642a5b5a42a1" />
+
+Select the downloaded file
+
+For the `settings` tab make sure the RAM says `4096` and for `MAC Adress Policy` select `Generate new MAC addresses for all network adapters` then `Finish`
+
+<img width="439" alt="Screenshot 2025-02-08 143728" src="https://github.com/user-attachments/assets/f67b7b84-e2ed-4924-81f6-6ffb4243d081" />
+
+Then add the vm to the `Malware Analysis Group`
+
+<img width="237" alt="Screenshot 2025-02-08 144056" src="https://github.com/user-attachments/assets/fdfe758a-9e71-4bdc-8374-c6c15616a03e" />
+
+Configuring the VM
+
+Select the new vm -> `Settings` -> `System` -> `Boot Order`
+
+<img width="423" alt="Screenshot 2025-02-08 144741" src="https://github.com/user-attachments/assets/9ad4a028-642c-4963-86bb-83f3e0c8bbd5" />
+
+Then start up the VM to start the guest addition installaiton
+
+Once started up setect `Devices` -> `Upgrade`
+
+![image](https://github.com/user-attachments/assets/0762e0af-b213-4557-b7b1-c9fb27fb1002)
+
+Once finished run this command: `remnux upgrade` this will update packages
+
+<img width="261" alt="Screenshot 2025-02-08 150929" src="https://github.com/user-attachments/assets/9e75f97c-b341-4054-a4a0-5723654194eb" />
+
+<img width="404" alt="Screenshot 2025-02-08 151012" src="https://github.com/user-attachments/assets/b863f27f-c7ed-4cbf-9cb0-e3d0a8f6b6ec" />
+
+<img width="231" alt="Screenshot 2025-02-08 151104" src="https://github.com/user-attachments/assets/0a119cb4-3160-4d5b-9b8b-798a5a7f3faf" />
+
+Once restarted, shut down the machine, we are going to move it the isolated network.
+
+I made a snapshot here.
+
+Open the `Settings` of the new VM -> go to the `Network` tab
+
+* Attached to: `Internal Network`
+* Name: `LAN 3` -> `OK`
+
+This will move the VM to the Isolated network, and will no longer have access to the internet.
+
+<img width="570" alt="Screenshot 2025-02-08 151833" src="https://github.com/user-attachments/assets/ccf21acb-4f93-41ae-ad98-5b46cc7a6cb5" />
+
+Ill take another snapshot here
+
+<img width="591" alt="Screenshot 2025-02-08 151940" src="https://github.com/user-attachments/assets/b40fe920-d71c-41e4-a8d5-c6839d2961d0" />
+
+# Creating A New Interface
+
+This next section will I will create a new VM containing Tsurugi Linux which is an OS that comes pre-configured with many of the commonly used Digital Forensics & Incident Response tools.
+
+Make sure all VM's are shut down since we will be accessing the CLI for adding a new interface.
+
+Open up Powershell
+
+Run these commands:
+
+
+* `VBoxManage modifyvm "pfSense" --nic6 intnet` - Creates an Internal Network
+* `VBoxManage modifyvm "pfSense" --nictype6 virtio` - Uses the ParaVirtualized Adapter
+* `VBoxManage modifyvm "pfSense" --intnet6 "LAN 4"` - Gives it a name
+* `VBoxManage modifyvm "pfSense" --cableconnected6 on` - Network Interface is connected by Cable
+
+<img width="550" alt="Screenshot 2025-02-08 153051" src="https://github.com/user-attachments/assets/fb118f49-8262-4c47-acd5-985b53b28772" />
+
+Now we can check our pfSense VM and should have a 6th interface.
+
+<img width="599" alt="Screenshot 2025-02-08 153131" src="https://github.com/user-attachments/assets/c709298b-7c04-422a-95cf-30bfdac7acb9" />
+
+Enabling the Interface
+
+Start up `pfSense VM`
+
+type and enter `1` to `Assign Interface`
+
+* Should VLANs be set up now? `n`
+* Enter the WAN interface name: `vtnet0`
+* Enter the LAN interface name: `vtnet1`
+* Enter the Optional 1 interface name: `vtnet2`
+* Enter the Optional 2 interface name: `vtnet3`
+* Enter the Optional 3 interface name: `vtnet4`
+* Enter the Optional 4 interface name: `vtnet5`
+
+<img width="360" alt="Screenshot 2025-02-08 153943" src="https://github.com/user-attachments/assets/4f1fe89e-ba4e-4a26-9ca2-d2b4ab5a48a4" />
+
+<img width="306" alt="Screenshot 2025-02-08 154056" src="https://github.com/user-attachments/assets/1e39a8d9-88b7-4c45-aeb2-7c4720399c56" />
+
+Do you want to proceed?: `y`
+
+<img width="364" alt="Screenshot 2025-02-08 154157" src="https://github.com/user-attachments/assets/e481ba4e-0bfd-4607-b2c9-514abdc468ca" />
+
+Now the interface is onboarded we can assign it an IP. Type and enter `2`
+
+<img width="376" alt="Screenshot 2025-02-08 154350" src="https://github.com/user-attachments/assets/a8a0fbb0-0d8f-46b9-81e0-5712a2ac6173" />
+
+Enter `6`
+
+<img width="367" alt="Screenshot 2025-02-08 154424" src="https://github.com/user-attachments/assets/df42b0e1-add2-4985-8e62-46f26042cee1" />
+
+* Configure IPv4 address OPT3 interface via DHCP?: `n`
+* Enter the new OPT4 IPv4 address: `10.10.10.1`
+* Enter the new OPT4 IPv4 subnet bit count: `24`
+* `Enter`
+
+<img width="375" alt="Screenshot 2025-02-08 154613" src="https://github.com/user-attachments/assets/35044f4f-52a6-4f4d-af77-bb181f85e9ab" />
+
+Configure IPv6 address OPT4 interface via DHCP6: `n`
+For the new OPT4 IPv6 address question press `Enter`
+Do you want to enable the DHCP server on OPT4?: `y`
+Enter the start address of the IPv4 client address range: `10.10.10.11`
+Enter the end address of the IPv4 client address range: `10.10.10.243`
+Do you want to revert to HTTP as the webConfigurator protocol?: `n`
+
+<img width="374" alt="Screenshot 2025-02-08 154816" src="https://github.com/user-attachments/assets/49873f1e-135d-4d7a-a11e-4a0bf8a3a8d2" />
+
+OPT4 will have an IP address now.
+
+<img width="370" alt="Screenshot 2025-02-08 154849" src="https://github.com/user-attachments/assets/2e75f097-11be-44cd-bf63-908ba10fdd7d" />
+
+Renaming the new interface in the `Kali Linux` VM is the next step.
+
+Start up the Kali Linux VM
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

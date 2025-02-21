@@ -2526,44 +2526,359 @@ Renaming the new interface in the `Kali Linux` VM is the next step.
 
 Start up the Kali Linux VM
 
+Once inside the `pfSense web portal` -> `Interfaces` -> `OPT4`
 
+<img width="251" alt="Screenshot 2025-02-20 090757" src="https://github.com/user-attachments/assets/6ec4ec10-17b3-4744-b485-1f7e05dc1c76" />
 
+Then change the description to `SECURITY` then save changes and `apply`
 
+<img width="365" alt="Screenshot 2025-02-20 090837" src="https://github.com/user-attachments/assets/982fe1b3-4e39-4567-8866-6571df5cdb88" />
 
+<img width="580" alt="Screenshot 2025-02-20 090937" src="https://github.com/user-attachments/assets/94777c6c-7f65-43ee-946f-2d1c952e89de" />
 
+# OPT4 Firewall configuration
 
+At the top select `Firewall` -> `Rules`
 
+<img width="271" alt="Screenshot 2025-02-20 091054" src="https://github.com/user-attachments/assets/807df699-3f04-4ff4-853b-b8c0d35dfe32" />
 
+Select `Security` -> `add rule to end of list`
 
+<img width="587" alt="Screenshot 2025-02-20 091147" src="https://github.com/user-attachments/assets/f8952607-9ff5-4899-b3f4-79a346d3382a" />
 
+Then make these changes:
 
+* Action: `Block`
+* Address Family: `IPv4+IPv6`
+* Protocol: `Any`
+* Source: `SECURITY subnets`
+* Destination: `WAN subnets`
+* Description: `Block access to services on WAN interface`
+* `Save`
 
+<img width="420" alt="Screenshot 2025-02-20 091339" src="https://github.com/user-attachments/assets/6f75f55f-3010-46db-add2-5b4911efa4ac" />
 
+<img width="444" alt="Screenshot 2025-02-20 091449" src="https://github.com/user-attachments/assets/f95e5b2a-b00d-4747-aaf2-6a711b397b20" />
 
+Dont select the `Apply` button, select the same `Add` button as before
 
+* Action: `Block`
+* Address Family: `IPv4+IPv6`
+* Protocol: `Any`
+* Source: SECURITY `subnets`
+* Destination: `LAN subnets`
+* Description: `Block access to services on LAN`
+* `Save`
 
+<img width="593" alt="Screenshot 2025-02-20 091758" src="https://github.com/user-attachments/assets/cb81eb36-25b3-4787-a0ef-af23bfbf35c0" />
 
+<img width="442" alt="Screenshot 2025-02-20 091840" src="https://github.com/user-attachments/assets/b42ffd40-08e6-4272-baf9-a514ebb8dbff" />
 
+<img width="414" alt="Screenshot 2025-02-20 091917" src="https://github.com/user-attachments/assets/16f0e5ba-2764-426a-80ba-6aaf71203db8" />
 
+Select `Add` again
 
+<img width="602" alt="Screenshot 2025-02-20 092004" src="https://github.com/user-attachments/assets/4bb7babb-d13f-4bb5-bb25-646f3d71eae4" />
 
+* Address Family: `IPv4+IPv6`
+* Protocol: `Any`
+* Source: `SECURITY subnets`
+* Description: `Allow traffic to all subnets and Internet`
+* `Save`
 
+<img width="444" alt="Screenshot 2025-02-20 092120" src="https://github.com/user-attachments/assets/c4db5d46-efe9-4a5d-8b51-7ff25247528e" />
 
+<img width="418" alt="Screenshot 2025-02-20 092159" src="https://github.com/user-attachments/assets/601c4fbb-b01a-4906-b9d6-daeb04fde176" />
 
+Then select `Apply Changes`
 
+<img width="592" alt="Screenshot 2025-02-20 092243" src="https://github.com/user-attachments/assets/e3dcb8a7-b10c-48f3-bf32-bb01299c0030" />
 
+Next is to reboot pfSense web portal, select `Diagnostics` -> `Reboot` 
 
+<img width="493" alt="Screenshot 2025-02-20 092422" src="https://github.com/user-attachments/assets/6ebadf8c-d177-484a-a9ff-8705b5cca071" />
 
+`Submit`
 
+<img width="199" alt="Screenshot 2025-02-20 092459" src="https://github.com/user-attachments/assets/984faa6b-4dbb-4aeb-b154-5605a9b34ec5" />
 
+Then you will be redirected to the login screen after reboot.
 
+# Tsurugi Linux Setup
 
+Next is to download the Tsurgi mirror, this is 16 GB so it will take awhile.
 
+Head to this link and select `Mirror 1`
 
+<img width="279" alt="Screenshot 2025-02-20 093148" src="https://github.com/user-attachments/assets/958c94d9-4db4-4915-ae47-7fd136da711e" />
 
+Select the `.iso` image
 
+<img width="500" alt="Screenshot 2025-02-20 093243" src="https://github.com/user-attachments/assets/67d46a39-11bd-49a8-87f2-87b97a24effc" />
 
+Now that the `.iso` image is downloaded
 
+<img width="532" alt="Screenshot 2025-02-20 133508" src="https://github.com/user-attachments/assets/d1c9fb08-1954-450d-89a8-104c575c3856" />
+
+Next step is the create the VM inside VirtualBox
+
+Select `New` inside VirtualBox
+
+Give it a name: `Tsurugi Linux` -> then select the newly downloaded `.iso image` -> select `Hardware`
+
+<img width="644" alt="Screenshot 2025-02-20 133956" src="https://github.com/user-attachments/assets/dc2bce77-d639-4126-a523-6f08287f6476" />
+
+Increase the base memory to `4096MB`
+
+<img width="641" alt="Screenshot 2025-02-20 134327" src="https://github.com/user-attachments/assets/78f5cc80-ab70-4783-9c2f-3e9670536476" />
+
+Then increase the Hard disk to `150 GB` -> `Finish`
+
+<img width="644" alt="Screenshot 2025-02-20 134421" src="https://github.com/user-attachments/assets/d438cc19-0ae9-4343-b815-438754660735" />
+
+Next put this new VM into a new group and rename the group to `Security`
+
+<img width="229" alt="Screenshot 2025-02-20 134740" src="https://github.com/user-attachments/assets/299dc335-3264-4f1e-8804-45aec62ae214" />
+
+# Confguring Tsurugi VM
+
+Inside VirtualBox select the New VM and select `Settings
+
+<img width="502" alt="Screenshot 2025-02-20 134859" src="https://github.com/user-attachments/assets/b3775d5c-8012-44c2-865d-9bff5fe3932f" />
+
+Select the `System` tab -> `Motherboard` -> In the boot order make sure its Hard disk, Optical, Floppy, then Network like below
+
+<img width="349" alt="Screenshot 2025-02-20 135054" src="https://github.com/user-attachments/assets/6063afa3-3580-4810-b36c-aa4f0b87867e" />
+
+Then enable `EFI`
+
+<img width="456" alt="Screenshot 2025-02-20 135133" src="https://github.com/user-attachments/assets/18d9b8c6-6c85-40e2-b120-581db6d6b48f" />
+
+Next go to the `Network` tab -> `Adapter 1`
+
+* Attached to: `Internal Network`
+* Name: `LAN 4`
+* Then select `Ok` to finish
+
+<img width="421" alt="Screenshot 2025-02-20 135402" src="https://github.com/user-attachments/assets/45a9490d-2dd5-44ff-9b31-cf25f28d0285" />
+
+Next step is to start up the VM, select start inside VirtualBox
+
+Once inside `Tsurugi` VM select `Displays` (This is to be able to see everything on screen)
+
+<img width="228" alt="Screenshot 2025-02-20 140304" src="https://github.com/user-attachments/assets/ff7ace60-e75f-4b72-8d01-8f0a8ec39dc1" />
+
+Then change the resolution to `1600x1050` -> `Apply` -> `Keep This Configuration`
+
+<img width="331" alt="Screenshot 2025-02-20 140449" src="https://github.com/user-attachments/assets/2b2bc0c3-79bc-49a4-a29f-e3f130863c8f" />
+
+Next is to select `Install Tsurugi Linux 2023.2` to start the install
+
+<img width="175" alt="Screenshot 2025-02-20 140703" src="https://github.com/user-attachments/assets/5a5501a5-6101-4c58-b43c-9710289eb93a" />
+
+Select your language
+
+<img width="120" alt="Screenshot 2025-02-20 140903" src="https://github.com/user-attachments/assets/e1d7635a-5e3d-490d-b278-24cf51981015" />
+
+Keyboard
+
+<img width="647" alt="Screenshot 2025-02-20 140932" src="https://github.com/user-attachments/assets/4fc8cf2a-4ce3-4ff5-92d1-251011e1106c" />
+
+Enable `Install third-party software for graphics and Wi-Fi hardware and additional media features`
+
+<img width="347" alt="Screenshot 2025-02-20 141430" src="https://github.com/user-attachments/assets/1422ab39-eced-4908-aac6-38e9ad16f2c2" />
+
+Then select `Install Now`
+
+<img width="653" alt="Screenshot 2025-02-20 141844" src="https://github.com/user-attachments/assets/a2110bae-8218-430b-978a-2d122df7a458" />
+
+`Continue`
+
+<img width="373" alt="Screenshot 2025-02-20 141904" src="https://github.com/user-attachments/assets/fa49c7e8-e940-44e6-a6b6-ce31055c2bcc" />
+
+Then select your time zone
+
+<img width="631" alt="Screenshot 2025-02-20 141957" src="https://github.com/user-attachments/assets/99ac30ff-9f4c-4ab9-8beb-7d146425ed68" />
+
+Then fill out the username and password fields
+
+<img width="298" alt="Screenshot 2025-02-20 142201" src="https://github.com/user-attachments/assets/0325b5d9-1885-465a-91a2-8a3c5ef859a4" />
+
+Then select `Restart`
+
+<img width="269" alt="Screenshot 2025-02-20 153339" src="https://github.com/user-attachments/assets/37d90b98-24a6-4fd1-b6da-b6a397e4aa2b" />
+
+Next step is to install guest additions, select `Device` at the top then `Inert Guest Additions CD Image`
+
+<img width="225" alt="Screenshot 2025-02-21 072923" src="https://github.com/user-attachments/assets/ae55ac91-a2bc-4a95-9314-ca63bc311c4d" />
+
+Once that is done select the little CD in the top right, then select `Mount` option
+
+<img width="157" alt="Screenshot 2025-02-21 073240" src="https://github.com/user-attachments/assets/53057966-347f-4412-886e-decb61720724" />
+
+Next select the `icon`
+
+<img width="342" alt="Screenshot 2025-02-21 073428" src="https://github.com/user-attachments/assets/447dcf3d-897e-4a57-8a47-5f173cbe8cd5" />
+
+Inside the toolbar select `Tools` -> `Open Current Folder in Terminal`
+
+<img width="339" alt="Screenshot 2025-02-21 073614" src="https://github.com/user-attachments/assets/b9dd42c3-fe21-465c-ab8d-7827ccd98f3f" />
+
+Next is to run this command to get the Guest Additions: `sudo ./VBoxLinuxAdditions.run`
+
+<img width="453" alt="Screenshot 2025-02-21 074110" src="https://github.com/user-attachments/assets/8304ec2e-de8e-4e6a-9699-ff42068af5b4" />
+
+Next test if it was successful by clicking `right Ctrl + f` to enter fullscreen
+
+After that select the CD in the top right and slect the `Eject` option
+
+<img width="211" alt="Screenshot 2025-02-21 074207" src="https://github.com/user-attachments/assets/9c7d166e-dfd3-4b9b-9c14-2c67855e7d1c" />
+
+Next is to shut down the system for the chnages to be perminante.
+
+Select the `power` icon -> then `Shut down` -> `Shut down`
+
+<img width="190" alt="Screenshot 2025-02-21 074502" src="https://github.com/user-attachments/assets/349fc64d-da72-4be9-805b-83f66ed99c71" />
+
+<img width="217" alt="Screenshot 2025-02-21 074547" src="https://github.com/user-attachments/assets/d34d77bc-cb4c-4545-978b-edeb7d2cb4b6" />
+
+Then re open the `Tsurugi vm`
+
+Once logged back in, open the `Terminator` app on the desktop
+
+<img width="226" alt="Screenshot 2025-02-21 075020" src="https://github.com/user-attachments/assets/c820b8f2-eb79-488b-a7b4-9e042f60e759" />
+
+Then run this command to see if there is any updates, if there are press `enter`
+
+`sudo apt update && sudo apt full-upgrade`
+
+<img width="366" alt="Screenshot 2025-02-21 075622" src="https://github.com/user-attachments/assets/85d8ce04-463b-48cc-89ee-415e325b5283" />
+
+Shut down the machine and make a snapshot
+
+<img width="555" alt="Screenshot 2025-02-21 075842" src="https://github.com/user-attachments/assets/b5fa3581-d407-4a0d-9912-8eca71bb761e" />
+
+Next will be to set up a Ubuntu image using Splunk
+
+# Ubuntu Setup
+
+Go to this link to download the latest Ubuntu LTS image: `https://ubuntu.com/download/desktop`
+
+<img width="773" alt="Screenshot 2025-02-21 080403" src="https://github.com/user-attachments/assets/3e0ba05a-77eb-4260-9d5d-b3135a25393a" />
+
+Once you have the `.iso` image
+
+<img width="526" alt="Screenshot 2025-02-21 090917" src="https://github.com/user-attachments/assets/6ede5b60-720c-4d2b-8636-860b915aebe9" />
+
+# Creating the Ubunu VM
+
+Select `New` inside VirtualBox
+
+<img width="472" alt="Screenshot 2025-02-21 091455" src="https://github.com/user-attachments/assets/8f08c4fb-58cd-463a-b3c2-ece82d2df1e9" />
+
+Give it a name `Splunk Enterprise` -> select the `Ubuntu iso image` -> Select `Skip Unattended Installation` -> `Hardware`
+
+<img width="644" alt="Screenshot 2025-02-21 091547" src="https://github.com/user-attachments/assets/dfa49692-9ebf-4104-9386-a5904b0e7865" />
+
+Increase base memory to `4096 MB` -> `Hard Disk`
+
+<img width="640" alt="Screenshot 2025-02-21 091723" src="https://github.com/user-attachments/assets/e1d86d7d-b897-42d6-906d-27851446ff75" />
+
+Increase Hard disk size to `100 GB` -> `Finish`
+
+<img width="645" alt="Screenshot 2025-02-21 092004" src="https://github.com/user-attachments/assets/ec8686a5-ad09-464d-ac91-d6d01446bc10" />
+
+Then add this VM to the `Security` group
+
+# Configuring the VM
+
+Select `Settings` -> `System` -> `Motherboard` 
+
+Boot order Hard disk, Optical, Floppy, then Network
+
+<img width="466" alt="Screenshot 2025-02-21 092247" src="https://github.com/user-attachments/assets/36d396df-6479-42c6-9950-72b406c49f58" />
+
+Then select the `Network` tab -> `Adapter 1` -> Attached to : `Internal Network` -> Name `LAN 4`
+
+<img width="572" alt="Screenshot 2025-02-21 092424" src="https://github.com/user-attachments/assets/00305e5f-677b-4bfc-8d94-2dfdccba6fea" />
+
+# Installing Ubuntu 
+
+Select the `Ubuntu` VM and select `Start`
+
+<img width="402" alt="Screenshot 2025-02-21 092632" src="https://github.com/user-attachments/assets/c8962f50-b992-4f37-a7e0-59db5850942c" />
+
+Then follow these changes:
+
+<img width="486" alt="Screenshot 2025-02-21 093045" src="https://github.com/user-attachments/assets/44466879-eaf3-402c-93b6-d6e844f98b3a" />
+
+<img width="480" alt="Screenshot 2025-02-21 093114" src="https://github.com/user-attachments/assets/d9b213b4-0938-46b1-876c-b98ac3b619a5" />
+
+<img width="471" alt="Screenshot 2025-02-21 093134" src="https://github.com/user-attachments/assets/889b88c7-7dd2-4cb2-a01d-0087cf4254ca" />
+
+<img width="474" alt="Screenshot 2025-02-21 093250" src="https://github.com/user-attachments/assets/15fc06ee-fc46-4357-948d-26a1250a5015" />
+
+<img width="475" alt="Screenshot 2025-02-21 093302" src="https://github.com/user-attachments/assets/2e53e121-49e9-493e-ab6f-df5178b06048" />
+
+<img width="480" alt="Screenshot 2025-02-21 094512" src="https://github.com/user-attachments/assets/ed8492d0-9df7-48ee-a5cf-1a644af9da8f" />
+
+<img width="487" alt="Screenshot 2025-02-21 094542" src="https://github.com/user-attachments/assets/42a72e87-ec3e-4d69-947a-8113d6d303d6" />
+
+<img width="479" alt="Screenshot 2025-02-21 094604" src="https://github.com/user-attachments/assets/499cfc5d-5c0d-4410-b224-2ae068ed2f11" />
+
+<img width="479" alt="Screenshot 2025-02-21 094722" src="https://github.com/user-attachments/assets/2177f6e9-6f24-4277-af8b-5b184891bfe6" />
+
+Fill out the information needed
+
+<img width="281" alt="Screenshot 2025-02-21 095023" src="https://github.com/user-attachments/assets/1dfd397b-2522-4cc6-8ca5-5c95ed8dcb7d" />
+
+Select Timezone
+
+<img width="480" alt="Screenshot 2025-02-21 095106" src="https://github.com/user-attachments/assets/02b7b2b8-455c-4317-b521-6ffa6043469f" />
+
+<img width="476" alt="Screenshot 2025-02-21 095138" src="https://github.com/user-attachments/assets/e0360dfb-ec15-46f2-ba99-01fbb99e7411" />
+
+<img width="325" alt="Screenshot 2025-02-21 100444" src="https://github.com/user-attachments/assets/38bf28ff-e312-4303-b9bf-e526a671f88b" />
+
+<img width="510" alt="Screenshot 2025-02-21 102250" src="https://github.com/user-attachments/assets/78f0b7dc-8402-41d6-b411-40ab8de32e74" />
+
+<img width="507" alt="Screenshot 2025-02-21 102304" src="https://github.com/user-attachments/assets/f3cb501b-e9c6-4d96-9ce8-cfddf82f40d0" />
+
+<img width="445" alt="Screenshot 2025-02-21 102330" src="https://github.com/user-attachments/assets/bf3b6a59-a4a9-45ce-b349-59eadcfa8e73" />
+
+<img width="513" alt="Screenshot 2025-02-21 102344" src="https://github.com/user-attachments/assets/9e625aec-af8d-4389-b2df-5735251f4e6a" />
+
+Then after re logging in select `Devices -> Install Guest Additions CD image`
+
+Then you will see a disk show up, slect that.
+
+`Right click` an open space in the window then select `Open in Terminal`
+
+<img width="330" alt="Screenshot 2025-02-21 104936" src="https://github.com/user-attachments/assets/2c392365-daf4-4076-b480-aa7af7d4d730" />
+
+<img width="130" alt="Screenshot 2025-02-21 105012" src="https://github.com/user-attachments/assets/d1e062dc-71ec-4302-8444-7e33838fb30a" />
+
+Then run this command to install the guest additions: `sudo ./VBoxLinuxAdditions.run`
+
+Once the command is done
+
+<img width="370" alt="Screenshot 2025-02-21 105400" src="https://github.com/user-attachments/assets/f0d47e40-5aa1-4c7f-9e7e-fcfdc7a3b878" />
+
+Right click the same disk icon -> `Eject`
+
+<img width="191" alt="Screenshot 2025-02-21 105443" src="https://github.com/user-attachments/assets/720ae6cb-d347-4575-aeaa-2c6028b9148a" />
+
+Next to update the system, to do this open a terminal using the buttons `Ctrl+Alt+T` -> run this command `sudo apt update && sudo apt full-upgrade
+
+Once complete
+
+<img width="331" alt="Screenshot 2025-02-21 110315" src="https://github.com/user-attachments/assets/b6f0da9b-253d-407e-b961-dbfc057294fa" />
+
+Power down the machine and make a snapshot
+
+<img width="172" alt="Screenshot 2025-02-21 110335" src="https://github.com/user-attachments/assets/1917a91d-113e-42aa-a1ed-51b60871730e" />
+
+<img width="433" alt="Screenshot 2025-02-21 110428" src="https://github.com/user-attachments/assets/af65b7cc-1f56-44b7-b18c-97e5a26aedf8" />
 
 
 

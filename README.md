@@ -2880,5 +2880,52 @@ Power down the machine and make a snapshot
 
 <img width="433" alt="Screenshot 2025-02-21 110428" src="https://github.com/user-attachments/assets/af65b7cc-1f56-44b7-b18c-97e5a26aedf8" />
 
+# Splunk Installation & Download
+
+Open `pfSense` & `Splunk` VM 
+
+Once inside the Splunk VM, open the browser and go to this link `https://www.splunk.com/en_us/download/splunk-enterprise.html`
+
+Once you have created a Splunk account, you will be directed to the downloads. Select `Linux` -> then select the `.deb` file 
+
+<img width="643" alt="Screenshot 2025-02-24 075321" src="https://github.com/user-attachments/assets/b11fc524-2bb2-4526-9750-e8645605f726" />
+
+After download is complete, go to the downloads folder, and open a terminal and run this command `cd Downloads`
+
+<img width="520" alt="Screenshot 2025-02-24 075755" src="https://github.com/user-attachments/assets/42835dcd-84e5-469a-b6af-f9208a5f2ade" />
+
+Then run this command to install dependencies `sudo apt install curl`
+
+<img width="409" alt="Screenshot 2025-02-24 075945" src="https://github.com/user-attachments/assets/8b3897ed-be83-4ec1-a06e-5e08f156a50d" />
+
+Once finished run this command to install Splunk `sudo dpkg -i splunk-9.1.2-b6b9c8185839-linux-2.6-amd64.deb`
+
+<img width="478" alt="Screenshot 2025-02-24 080740" src="https://github.com/user-attachments/assets/16fd0a12-14cc-45ab-83f7-cbe7b25f89f0" />
+
+Then run this command to start Splunk `sudo /opt/splunk/bin/splunk start --accept-license --answer-yes`
+
+Make sure to save the username and password used for Admin account setup.
+
+I came to an issue where the webpage was unreachable, what I did to solve it is just power down the machine and restart it.
+
+Then once completed it should look like this
+
+<img width="555" alt="Screenshot 2025-02-24 084706" src="https://github.com/user-attachments/assets/4c61774b-1735-4b1a-8fa2-058f0cdd0a90" />
+
+Then run this command to run Splunk when it boots `sudo /opt/splunk/bin/splunk enable boot-start`
+
+<img width="367" alt="Screenshot 2025-02-24 085254" src="https://github.com/user-attachments/assets/ba5e9e1c-277f-4cb6-80f5-ce9151fc4f1a" />
+
+After this is complete, shut down the VM and create a snapshot
+
+<img width="448" alt="Screenshot 2025-02-24 085456" src="https://github.com/user-attachments/assets/28b34276-de63-4691-8102-20d017a3cf28" />
+
+
+
+
+
+
+
+
 
 

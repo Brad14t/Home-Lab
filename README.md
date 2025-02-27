@@ -3149,16 +3149,63 @@ In Tsurugi use a version of this command `ssh remnux@10.99.99.3` -> `exit` to di
 
 <img width="319" alt="Screenshot 2025-02-25 150946" src="https://github.com/user-attachments/assets/dfff3078-8585-44e3-9526-951d74e60a73" />
 
+# SCP File Transfer
 
+For more informatino on SCP file transfer go to this link: `https://linuxblog.io/linux-securely-copy-files-using-scp/`
 
+Since we can now connect to the Malware Analysis vm's we will use SCP which is a CLI utility that uses SSH to securly transfer files over the network.
 
+To test this SCP transfer ability, inside Tsurugi vm create a `txt` file and we will practice sending files with this txt file.
 
+Run these commands inside `Tsurugi vm`: `cd Downloads` -> `echo "Hello World" > helloworld.txt` -> `cat helloworld.txt`
 
+<img width="365" alt="Screenshot 2025-02-27 091754" src="https://github.com/user-attachments/assets/1d18df19-d1e4-417e-b270-1ecec07d70a5" />
 
+Next we will transfer this file to `Flare vm`
 
+Use your version of this command: `scp helloworld.txt david@10.99.99.2:/C:/Users/David/Downloads`
 
+If you get the error I did.
 
+<img width="443" alt="Screenshot 2025-02-27 092609" src="https://github.com/user-attachments/assets/b55c2368-d377-4500-96fe-f0fe3afd07fb" />
 
+Make sure ssh is running on Flare vm
+
+<img width="180" alt="Screenshot 2025-02-27 092624" src="https://github.com/user-attachments/assets/4cf8fb34-0e92-4cb4-abec-8a6f89fc8ef2" />
+
+Then try again.
+
+Once successful it will copy the file to the downloads of the Flare VM
+
+<img width="548" alt="Screenshot 2025-02-27 092757" src="https://github.com/user-attachments/assets/c28ca70a-4884-4899-8d90-b66ca53935b2" />
+
+<img width="190" alt="Screenshot 2025-02-27 092817" src="https://github.com/user-attachments/assets/e0ca4bc4-4417-4d92-abbb-def40ce20342" />
+
+Now lets try this same process on the REMnux vm
+
+Run your version of my command: `scp helloworld.txt remnux@10.99.99.3:~/Downloads`
+
+<img width="553" alt="Screenshot 2025-02-27 093437" src="https://github.com/user-attachments/assets/a3bd752d-0d1c-4ac3-abd3-36ec5692cf6f" />
+
+<img width="212" alt="Screenshot 2025-02-27 093604" src="https://github.com/user-attachments/assets/bc374365-bc44-4393-b32a-9ed2ab908100" />
+
+Since this is just a test, we will now practice how to shut down after copying files over.
+
+First step is to shut down SSH on Tsurugi, Flare, and REMnux vm's
+
+One Tsurugi use: `sudo systemctl stop ssh`
+
+<img width="409" alt="Screenshot 2025-02-27 094115" src="https://github.com/user-attachments/assets/a8da1a26-a75b-4a65-8e5e-187baa77e1b6" />
+
+On Flare VM use: `Stop-Service sshd`
+
+<img width="177" alt="Screenshot 2025-02-27 094314" src="https://github.com/user-attachments/assets/65e1a18e-350a-474b-b0f0-8985d618faa6" />
+
+On REMnux use: `sudo systemctl stop ssh`
+
+<img width="457" alt="Screenshot 2025-02-27 094409" src="https://github.com/user-attachments/assets/8f9a2144-8ca3-4f0e-baef-e727dbfbdeb2" />
+
+Now that everything in the setup is complete, I will start to simulate attacks through the network for analysis and technical practice of what an attack looks like.
 
 
 

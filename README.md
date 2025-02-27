@@ -2920,6 +2920,245 @@ After this is complete, shut down the VM and create a snapshot
 
 <img width="448" alt="Screenshot 2025-02-24 085456" src="https://github.com/user-attachments/assets/28b34276-de63-4691-8102-20d017a3cf28" />
 
+Go back into your Splunk vm, and make sure Splunk is running, to check use this command `sudo /opt/splunk/bin/splunk status`
+
+If it is not running run this command to start it `sudo /opt/splunk/bin/splunk start`
+
+Then enter username and password into the web using this link `http://splunk:8000`
+
+We have to make some setting changes to be able to use the `Universal forwarder`
+
+From the top tool bar within Splunk select `Settings` -> `Forwarding and receiving`
+
+<img width="339" alt="Screenshot 2025-02-25 100002" src="https://github.com/user-attachments/assets/5ee488b7-5f2a-44c5-a4d7-8d2b3ab51a27" />
+
+Then from the `Receive data` section select `add new`
+
+<img width="508" alt="Screenshot 2025-02-25 100053" src="https://github.com/user-attachments/assets/1e83103b-e516-4349-a37c-35a35e3f3704" />
+
+Enter `9997` -> `Save`
+
+<img width="507" alt="Screenshot 2025-02-25 100312" src="https://github.com/user-attachments/assets/eb09b9d3-7523-49e2-b5c5-54846a0a7376" />
+
+# Universal Forwarder Installation
+
+We will be forwarding data from the `Domain Controller (Windows Server 2019)` VM
+
+Start up and Sign into the Windows Server 2019 VM
+
+Go to this link, login and download the 64 bit for Windows Server: `https://www.splunk.com/en_us/download/universal-forwarder.html?locale=en_us`
+
+<img width="633" alt="Screenshot 2025-02-25 100715" src="https://github.com/user-attachments/assets/5a8e1f58-3e22-43e8-9c3a-d003afd56d29" />
+
+Select the box at the top to agree to the liscense agreement -> then enter a username and password.
+
+<img width="255" alt="Screenshot 2025-02-25 102155" src="https://github.com/user-attachments/assets/8f9779e3-66ef-42b7-a2f9-bb8a4fa2d687" />
+
+It then asks for the IP of the Splunk instance, go into the Splunk vm terminal and use the command `ip a` to get the IP
+
+<img width="521" alt="Screenshot 2025-02-25 102529" src="https://github.com/user-attachments/assets/293a44de-aaf7-43de-b1af-8069512971df" />
+
+For me the IP is `10.10.10.12` the for the port use `8089`
+
+<img width="256" alt="Screenshot 2025-02-25 102702" src="https://github.com/user-attachments/assets/d08397dc-38a9-4e74-9a05-7d04ec5b3437" />
+
+For the Receiving Indexer use the same ip and use `9997` for the port #
+
+<img width="252" alt="Screenshot 2025-02-25 102822" src="https://github.com/user-attachments/assets/731fe804-8567-4fbe-8be4-c2c02d4f682e" />
+
+<img width="256" alt="Screenshot 2025-02-25 102832" src="https://github.com/user-attachments/assets/ddb658f0-0298-4be7-8a57-f7e34a2f2eb5" />
+
+<img width="253" alt="Screenshot 2025-02-25 103017" src="https://github.com/user-attachments/assets/2b10eecc-c4c1-4015-a760-6b6303394b94" />
+
+# Adding Data Source
+
+Next is to connect these 2
+
+Inside the Splunk VM from the tool bar select `Settings` -> `Add Data`
+
+<img width="306" alt="Screenshot 2025-02-25 103156" src="https://github.com/user-attachments/assets/335db86e-c630-45bf-b0c7-cc6abf4b27aa" />
+
+Select `Forward`
+
+<img width="511" alt="Screenshot 2025-02-25 103221" src="https://github.com/user-attachments/assets/32672802-3b7a-4f3d-98dc-d61c35d9bbd6" />
+
+Our WINDOWS DC will auto populate, select `add all` -> Then in the class name, name it anything I did `Domain Controller` -> `Next`
+
+<img width="338" alt="Screenshot 2025-02-25 103331" src="https://github.com/user-attachments/assets/61d360fb-e3b1-44f0-89ff-eb4b8ac50b54" />
+
+Select `Local Event Logs` -> `Add all`
+
+I came accross the problem that `Local Event Logs` didnt appear, to work around this select `Settings` -> `Data Inputs` -> Scroll down to forwarded event -> select `Windows Event Logs` -> from here you can select `Add all`
+
+<img width="547" alt="Screenshot 2025-02-25 105104" src="https://github.com/user-attachments/assets/3b0cc67b-bf12-47bf-afbc-081b078ebcfc" />
+
+Select `Create a new index`
+
+<img width="493" alt="Screenshot 2025-02-25 105312" src="https://github.com/user-attachments/assets/02b58aa3-d478-4eca-affb-c6c41857cf86" />
+
+Change name to `windows` -> everything else default and select `Next`
+
+<img width="408" alt="Screenshot 2025-02-25 105414" src="https://github.com/user-attachments/assets/570416c6-68ee-4765-b69d-5618629c7523" />
+
+Make sure it looks like this then select `Submit`
+
+<img width="475" alt="Screenshot 2025-02-25 105447" src="https://github.com/user-attachments/assets/75ba2c9d-9feb-4c74-9453-16008b1728f7" />
+
+Then to make sure it worked select `Start Searching`
+
+<img width="490" alt="Screenshot 2025-02-25 105555" src="https://github.com/user-attachments/assets/3af9ca31-003a-43d3-81d1-cf731a8b933a" />
+
+In the search bar type and enter `index="windows"` and make sure `Verbose mode` is selected for all the data.
+
+<img width="541" alt="Screenshot 2025-02-25 105729" src="https://github.com/user-attachments/assets/9728eff2-f9b7-464f-b80f-3931445d10b3" />
+
+# Transfering Files to Malware Analysis 
+
+In this section, we will find the way to get malicious data into the isolated subnet so it does affect the rest of the newtork.
+
+First we will need to Tsurugi Static IP
+
+First start up `pfSense VM` then `Tsurugi VM`
+
+Once inside the `Tsurugi vm` -> open the terminal and run the command `ip a`
+
+<img width="484" alt="Screenshot 2025-02-25 134941" src="https://github.com/user-attachments/assets/169baccf-2bea-4d29-9e48-0c4e0ad2d961" />
+
+Mine was assigned from DHCP `10.10.10.11`
+
+After that start up the `Kali Linux vm` and sign into the pfSense web GUI
+
+Select from the top tool bar `Status` -> `DHCP Leases`
+
+<img width="437" alt="Screenshot 2025-02-25 141600" src="https://github.com/user-attachments/assets/39917819-d0ed-4954-9663-e0e32f461406" />
+
+Then select the `+` (Add Static IP) next to the Tsurugi 
+
+<img width="576" alt="Screenshot 2025-02-25 141727" src="https://github.com/user-attachments/assets/b86230cb-89f6-46a0-8e33-08b0f55fa02e" />
+
+In the Ip Address enter `10.10.10.2` -> `Save`
+
+<img width="420" alt="Screenshot 2025-02-25 142038" src="https://github.com/user-attachments/assets/a7cbfbe3-1861-464f-9c0e-c49157938e3a" />
+
+<img width="592" alt="Screenshot 2025-02-25 142056" src="https://github.com/user-attachments/assets/33ea2eb6-74bb-4414-9890-230c267cf869" />
+
+# Refreshing Tsurugi Linux IP Address
+
+First we need to disable and re enable the network adapter within Tsurugi
+
+Open the terminal and run `sudo ip l set enp0s3 down && sudo ip l set enp0s3 up`
+
+<img width="364" alt="Screenshot 2025-02-25 142325" src="https://github.com/user-attachments/assets/776f5e7f-ceb4-4a96-b52b-3a9a8c10060b" />
+
+Then check if the IP address was changed using this command `ip a`
+
+<img width="475" alt="Screenshot 2025-02-25 142432" src="https://github.com/user-attachments/assets/24420391-55dd-4970-a0f7-ea3d7ab098d3" />
+
+Going back into the Kali Linux vm, ill refresh the page to confirm its been changed there as well.
+
+<img width="583" alt="Screenshot 2025-02-25 142636" src="https://github.com/user-attachments/assets/327a5746-ff5a-4070-ad1c-3e57941e6895" />
+
+# pfSense Firewall Configuration
+
+Select `Firewall` -> `Rules`
+
+<img width="284" alt="Screenshot 2025-02-25 142918" src="https://github.com/user-attachments/assets/c743d369-765d-44e3-b3d1-203a7bdc4738" />
+
+Select the `Isolated` tab -> select the arrow for `Add rule to the top of the list`
+
+<img width="588" alt="Screenshot 2025-02-25 143008" src="https://github.com/user-attachments/assets/4e91b79f-9a0b-4207-9817-07d69e0361e1" />
+
+Make these changes:
+
+* Source: `ISOLATED subnets`
+* Destination: `Address or Alias - 10.10.10.2`
+* Destination Port Range: `SSH (22)`
+* Description: `Allows SSH access to DFIR VM`
+* `Save`
+* `Apply Changes`
+
+<img width="605" alt="Screenshot 2025-02-25 143238" src="https://github.com/user-attachments/assets/cfc5222c-0683-4e9e-b417-f8d14a279ed1" />
+
+<img width="595" alt="Screenshot 2025-02-25 143327" src="https://github.com/user-attachments/assets/16c6a953-e372-46df-a4a7-dfbb0e327e23" />
+
+To check if the changes made were successful, go to your Tsurugi VM terminal and run `systemctl status ssh`
+
+<img width="422" alt="Screenshot 2025-02-25 143452" src="https://github.com/user-attachments/assets/97bec697-6fc0-4e77-9d72-abfa7c8b4567" />
+
+If it is disabled like mine, run this command to start it `sudo systemctl start ssh`
+
+<img width="412" alt="Screenshot 2025-02-25 143647" src="https://github.com/user-attachments/assets/fa87289c-78ee-41d3-97d7-8aa6a6d5f258" />
+
+Next we will start up and check the status of SSH on `Flare vm` & `REMnux Linux vm`
+
+Start up `Flare vm`
+
+Right click on the Start menu icon -> Select Windows PowerShell (Admin)
+
+<img width="164" alt="Screenshot 2025-02-25 144327" src="https://github.com/user-attachments/assets/bac14a9b-0e43-4f10-afc2-b3448ddd8c8a" />
+
+Then run the command `Get-Service sshd` to see status of SSH server
+
+<img width="169" alt="Screenshot 2025-02-25 144608" src="https://github.com/user-attachments/assets/9d5902eb-d26d-42cf-85c0-b33e21f4fae4" />
+
+Then to get it running, run this command `Start-Service sshd`
+
+<img width="172" alt="Screenshot 2025-02-25 144740" src="https://github.com/user-attachments/assets/9d16a3cf-73a5-4dbd-a449-2b8d82ed81f1" />
+
+Next is REMnux Linux
+
+Start up the REMnux vm
+
+Inside the terminal run the command `systemctl status ssh` then to start it run `systemctl start ssh`
+
+<img width="408" alt="Screenshot 2025-02-25 145609" src="https://github.com/user-attachments/assets/4f68c32a-d841-4627-b8a5-2cbdfd62d8c9" />
+
+# Testing SSH Connectivity
+
+To start we need the IP address of Flare and REMnux
+
+Inside Flare use `ipconfig`
+
+<img width="240" alt="Screenshot 2025-02-25 145751" src="https://github.com/user-attachments/assets/30210692-c8f0-4570-a973-6748806161c9" />
+
+Inside REMnux use `ip a`
+
+<img width="477" alt="Screenshot 2025-02-25 145834" src="https://github.com/user-attachments/assets/4b1784f4-2127-4700-91bd-fad6c3e76d9d" />
+
+# SSHing into Flare VM
+
+For me my flare ip address is 10.99.99.2
+
+From Tsurugi run a version of this command `ssh david@10.99.99.2` (ssh username@Flare_IP)
+
+Type `yes` when asked about fingerprint
+
+<img width="363" alt="Screenshot 2025-02-25 150232" src="https://github.com/user-attachments/assets/13d3722e-dbb5-40eb-a75e-1295a62122f1" />
+
+Enter password for Flare
+
+<img width="175" alt="Screenshot 2025-02-25 150346" src="https://github.com/user-attachments/assets/c57ce67d-8d96-4dc7-ab4c-d40e99853b14" />
+
+If it looked like that, it was successful. Type `exit` to disconnect
+
+<img width="180" alt="Screenshot 2025-02-25 150359" src="https://github.com/user-attachments/assets/9df91e2d-7097-47fb-850b-b2eadab0aacc" />
+
+# SSHing into REMnux
+
+In Tsurugi use a version of this command `ssh remnux@10.99.99.3` -> `exit` to disconnect
+
+<img width="319" alt="Screenshot 2025-02-25 150946" src="https://github.com/user-attachments/assets/dfff3078-8585-44e3-9526-951d74e60a73" />
+
+
+
+
+
+
+
+
+
+
+
 
 
 
